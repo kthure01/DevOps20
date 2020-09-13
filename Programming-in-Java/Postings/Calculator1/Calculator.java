@@ -1,3 +1,4 @@
+import java.text.BreakIterator;
 import java.util.Scanner;
 
 public class Calculator {
@@ -70,23 +71,14 @@ public class Calculator {
                 case "X":
                     System.out.println("\nExiting the program!!");
                     runProgram = false;
-                    private static String getOperator() {
-                        String userInput = null;
-                        String regex = "[\\+\\-\\*\\/]"; // Valid operators as a regex string
-                        boolean falseInput = true;
-                
-                        do {
-                            System.out.print(("Choose which math operator you want to use: [+-*/]: "));
-                                System.out.println(
-                                        TEXT_RED + "\n\nERROR: Invalid input!" + TEXT_RESET + "\nEnter a valid math operator!");
-                                System.out.print("\nPress ENTER to continue: ");
-                                sc.nextLine();
-                
-                                falseInput = true;
-                            } while (falseInput);
-                
-                        return userInput;
-                    }
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+
     }
 
     // Method to get the operator.
