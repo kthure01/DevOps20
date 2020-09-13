@@ -11,25 +11,39 @@ public class Program {
         boolean runProgram = true;
 
         System.out.println("This is a simple calculator.\n");
-        while (runProgram) {
-            Testar calc = new Testar();
 
+        // Lopp until user exit the program
+        while (runProgram) {
+            // Create a new instance of the Calculator class for each loop
+            Calculator calc = new Calculator();
+
+            // Ask for integers
             calc.getIntegers();
+
+            // Ask for math operator
             calc.getOperator();
+
+            // Show result of the calculation
             calc.getCalculationResult();
 
+            // Ask user how to proceed
             switch (actionMenu()) {
+                // Clear console window
                 case "c":
                 case "C":
                     clear();
 
                     break;
 
+                // Exit program
                 case "x":
                 case "X":
                     System.out.println("\nExiting the program!!");
                     runProgram = false;
 
+                    break;
+
+                //
                 default:
                     break;
             }
@@ -38,26 +52,24 @@ public class Program {
 
     }
 
+    // Provided a menu to ask user how to procced
     private static String actionMenu() {
         String userInput = null;
         String regex = "[cCxX]";
         boolean falseInput = true;
 
-        do {
+        while (falseInput) {
             System.out.println("\nPress ENTER to continue, type X to exit the program or type C to clear the screen.");
-            System.out.print(("Choose action: [ENTER, C or X]: "));
+            System.out.print(("Choose action [Press ENTER, C or X]: "));
 
             userInput = sc.nextLine();
             if (userInput.matches(regex) || userInput.isEmpty()) {
                 falseInput = false;
             } else {
-                System.out.println(TEXT_RED + "\n\nERROR: Invalid input!" + TEXT_RESET + "\nEnter a valid action!");
-                System.out.print("\nPress ENTER to continue: ");
-                sc.nextLine();
-
-                falseInput = true;
+                System.out.println(TEXT_RED + "\n\nERROR: Invalid input!" + TEXT_RESET
+                        + "\nA valid action is [Press ENTER, C or X]!");
             }
-        } while (falseInput);
+        }
 
         return userInput;
     }
