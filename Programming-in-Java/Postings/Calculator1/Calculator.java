@@ -1,24 +1,30 @@
 import java.util.Scanner;
 
 public class Calculator {
+    // Used to colour text strings in the console window
     public static final String TEXT_RESET = "\u001B[0m";
     public static final String TEXT_RED = "\u001B[31m";
 
+    // Create a scanner to allow user inputs
     static Scanner sc = new Scanner(System.in);
 
+    // Variables to hold user input
     static int firstNumber;
     static int secondNumber;
-    static double sum;
+
     static boolean runProgram = true;
-    static int intCount = 0;
 
     public static void main(final String[] args) {
+
+        // The program will run in a loop until the user choose to exit
         while (runProgram) {
             System.out.println(("\nThis program will operate on 2 integers.\n"));
 
+            // Ask for 2 integers
             firstNumber = getAnInteger(1);
             secondNumber = getAnInteger(2);
 
+            // Ask for the operator
             switch (getOperator()) {
                 case "+":
                     System.out.println("\nThe result of the expression " + firstNumber + "+" + secondNumber + " is "
@@ -52,6 +58,7 @@ public class Calculator {
                     break;
             }
 
+            // Ask the user if he/she want to continue or exit the program
             switch (actionMenu()) {
                 case "c":
                 case "C":
@@ -63,15 +70,26 @@ public class Calculator {
                 case "X":
                     System.out.println("\nExiting the program!!");
                     runProgram = false;
-
-                default:
-                    break;
-            }
-        }
-
-        sc.close();
+                    private static String getOperator() {
+                        String userInput = null;
+                        String regex = "[\\+\\-\\*\\/]"; // Valid operators as a regex string
+                        boolean falseInput = true;
+                
+                        do {
+                            System.out.print(("Choose which math operator you want to use: [+-*/]: "));
+                                System.out.println(
+                                        TEXT_RED + "\n\nERROR: Invalid input!" + TEXT_RESET + "\nEnter a valid math operator!");
+                                System.out.print("\nPress ENTER to continue: ");
+                                sc.nextLine();
+                
+                                falseInput = true;
+                            } while (falseInput);
+                
+                        return userInput;
+                    }
     }
 
+    // Method to get the operator.
     private static String getOperator() {
         String userInput = null;
         String regex = "[\\+\\-\\*\\/]";
@@ -96,6 +114,7 @@ public class Calculator {
         return userInput;
     }
 
+    // Method to ask the user how to continue the program
     private static String actionMenu() {
         String userInput = null;
         String regex = "[cCxX]";
@@ -120,6 +139,7 @@ public class Calculator {
         return userInput;
     }
 
+    // Method to ask the user for a valid integer
     private static int getAnInteger(int intCount) {
         int userInput = 0;
         boolean falseInput = true;
@@ -143,11 +163,12 @@ public class Calculator {
         return userInput;
     }
 
+    // Method to clear the consol window
     private static void clear() {
         System.out.print("\033\143");
     }
 
-    // add numbers
+    // Methods for calculations depending on the users choice
     private static long addition(int first, int second) {
         return ((long) first) + second;
     }
