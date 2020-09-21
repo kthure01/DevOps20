@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /*
 Med hjälp av koden nedanför skall du skriva en metod som heter searchWeapo, denna metod ska ta in ett parameter argument
 som motsvarar vapnet man vill söka på.
@@ -78,6 +76,7 @@ public class GameProgram {
     // Method to change weapon
     public void changeWeapon(String newWeapon) {
         _weaponName = newWeapon;
+        System.out.println("The character \"" + _characterName + "\" now has an " + _weaponName + " weapon!");
     }
 
     public static void main(String[] args) {
@@ -103,7 +102,5 @@ public class GameProgram {
 
         // Change to a new weapon
         goodGuy.changeWeapon("Excalibur");
-        System.out.println(
-                "The character \"" + goodGuy._characterName + "\" now has an " + goodGuy._weaponName + " weapon!");
     }
 }
