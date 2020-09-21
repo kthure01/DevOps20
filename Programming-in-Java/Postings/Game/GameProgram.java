@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+
+import javax.lang.model.util.ElementScanner6;
+
 /*
 Med hjälp av koden nedanför skall du skriva en metod som heter searchWeapo, denna metod ska ta in ett parameter argument
 som motsvarar vapnet man vill söka på.
@@ -47,20 +51,28 @@ public class GameProgram {
         switch (wName) {
             case "Hammer":
                 if (_weaponName.equals(wName))
-                    System.out.println("The Hammer weapon is used by: " + _characterName);
+                    System.out.println("The \"" + wName + "\" weapon is used by: " + _characterName);
+                else
+                    System.out.println("The \"" + wName + "\" weapon is NOT used by: " + _characterName);
                 break;
 
             case "Magic Wand":
                 if (_weaponName.equals(wName))
-                    System.out.println("The Magic Wand weapon is used by: " + _characterName);
+                    System.out.println("The \"" + wName + "\" weapon is used by: " + _characterName);
+                else
+                    System.out.println("The \"" + wName + "\" weapon is NOT used by: " + _characterName);
+
                 break;
 
             case "Excalibur":
                 if (_weaponName.equals(wName))
-                    System.out.println("The Excalibur weapon is used by: " + _characterName);
+                    System.out.println("The \"" + wName + "\" weapon is used by: " + _characterName);
+                else
+                    System.out.println("The \"" + wName + "\" weapon is NOT used by: " + _characterName);
                 break;
 
             default:
+                System.out.println("The weapon \"" + wName + "\" not found!");
                 System.out.println("No valid weapon found for the character \"" + _characterName + "\"");
                 break;
         }
@@ -80,10 +92,6 @@ public class GameProgram {
     }
 
     public static void main(String[] args) {
-        // ArrayList<GameProgram> characters = new ArrayList<>();
-        // characters.add(new GameProgram("The Beast", hammer, 100, "Hammer"));
-        // characters.add(new GameProgram("Jafar", magicWand, 80, "Magic Wand"));
-
         GameProgram goodGuy = new GameProgram("The Beast", hammer, 100, "Hammer");
         GameProgram evilGuy = new GameProgram("Jafar", magicWand, 80, "Magic Wand");
         GameProgram oddGuy = new GameProgram("Odd Guy", magicWand, 60, "Unarmed");
