@@ -72,7 +72,7 @@ public class GameProgram {
                 break;
 
             default:
-                System.out.println("The weapon \"" + wName + "\" not found!");
+                System.out.println("The \"" + wName + "\" weapon not found!");
                 System.out.println("No valid weapon found for the character \"" + _characterName + "\"");
                 break;
         }
@@ -88,7 +88,7 @@ public class GameProgram {
     // Method to change weapon
     public void changeWeapon(String newWeapon) {
         _weaponName = newWeapon;
-        System.out.println("The character \"" + _characterName + "\" now has an " + _weaponName + " weapon!");
+        System.out.println("The character \"" + _characterName + "\" now has the \"" + _weaponName + "\" weapon!");
     }
 
     public static void main(String[] args) {
@@ -100,8 +100,8 @@ public class GameProgram {
                 evilGuy._weaponName);
         evilGuy.beingAttacked(evilGuy._characterName, goodGuy._characterName, goodGuy._weaponDamage,
                 goodGuy._weaponName);
-        // goodGuy.drinkingHealingPotion();
-        // evilGuy.drinkingHealingPotion();
+        goodGuy.drinkingHealingPotion();
+        evilGuy.drinkingHealingPotion();
 
         System.out.println("\n===== Added output =====");
         goodGuy.searchWeapon("Hammer");
