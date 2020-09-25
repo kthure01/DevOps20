@@ -1,2 +1,2 @@
 # DevOps20
-New repos for DevOps coarse
+New repos for DevOps course
