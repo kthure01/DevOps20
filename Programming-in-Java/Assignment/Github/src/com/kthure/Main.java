@@ -1,4 +1,3 @@
-package com.kthure;
 /*
 För betyget Godkänt:
 
@@ -18,35 +17,34 @@ För betyget Väl Godkänt:
     Merga din branch till master på Github
 */
 
-import javax.sound.midi.Soundbank;
-import java.util.IllegalFormatException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
    static Scanner sc = new Scanner(System.in);
 
    public static void main(String[] args) {
-      String regex = "[0-9]";
       int input;
+      boolean runProgram = true;
 
-      while (true) {
+      while (runProgram) {
          try {
-            System.out.println();
-            System.out.print("Enter a character " + regex + ": ");
+            System.out.print("Enter an integer: ");
             input = Integer.parseInt(sc.nextLine());
 
-            System.out.println("You entered a correct character: " + input);
+            System.out.println("You entered a correct integer: " + input);
 
             System.out.print("Type exit to exit the program!: ");
             if (sc.nextLine().equals("exit")) {
                System.out.println("Exiting the program!");
-               break;
+               runProgram = false;
             }
-         } catch (Exception e) {
+            else {
+               System.out.println("\n=== New loop ===");
+            }
+         } catch (NumberFormatException e) {
             System.err.println("Input error: " + e.getMessage());
          }
       }
-
-
    }
 }
