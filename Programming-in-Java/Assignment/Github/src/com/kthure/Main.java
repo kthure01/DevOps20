@@ -1,6 +1,6 @@
+package com.kthure;
 /*
 För betyget Godkänt:
-
     Skapa ett ’Repository’ på Github
     Skapa ett nytt java projekt som innehåller minst:
         En .gitignore fil som innehåller konfigurationsfilerna för den IDE du använder
@@ -17,7 +17,6 @@ För betyget Väl Godkänt:
     Merga din branch till master på Github
 */
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -34,8 +33,8 @@ public class Main {
 
             System.out.println("You entered a correct integer: " + input);
 
-            System.out.print("Type exit to exit the program!: ");
-            if (sc.nextLine().equals("exit")) {
+            System.out.print("Type \"exit\" to exit the program!: ");
+            if (sc.nextLine().toLowerCase().equals("exit")) {
                System.out.println("Exiting the program!");
                runProgram = false;
             }
@@ -43,6 +42,7 @@ public class Main {
                System.out.println("\n=== New loop ===");
             }
          } catch (NumberFormatException e) {
+            System.err.println("Input error: " + e.getMessage());
             System.err.println("Input error: " + e.getMessage());
          }
       }
