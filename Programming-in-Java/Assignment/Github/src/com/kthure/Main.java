@@ -35,15 +35,19 @@ public class Main {
 
             System.out.print("Type \"exit\" to exit the program!: ");
             if (sc.nextLine().toLowerCase().equals("exit")) {
-               System.out.println("Exiting the program!");
+               printoutMessage("Exit the program!");
                runProgram = false;
             }
             else {
-               System.out.println("\n=== New loop ===");
+               printoutMessage("\n=== New loop ===");
             }
          } catch (NumberFormatException e) {
             System.err.println("Input error: " + e.getMessage());
          }
       }
+   }
+
+   public static void printoutMessage (String messageToPrint) {
+      System.out.println(messageToPrint);
    }
 }
