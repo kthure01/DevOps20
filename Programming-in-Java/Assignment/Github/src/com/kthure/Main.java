@@ -43,7 +43,6 @@ public class Main {
             }
          } catch (NumberFormatException e) {
             System.err.println("Input error: " + e.getMessage());
-            System.err.println("Input error: " + e.getMessage());
          }
       }
    }
