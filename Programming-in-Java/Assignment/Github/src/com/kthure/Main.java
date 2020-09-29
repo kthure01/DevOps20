@@ -37,8 +37,7 @@ public class Main {
             if (sc.nextLine().toLowerCase().equals("exit")) {
                printoutMessage("Exit the program!");
                runProgram = false;
-            }
-            else {
+            } else {
                printoutMessage("\n=== New loop ===");
             }
          } catch (NumberFormatException e) {
@@ -47,7 +46,7 @@ public class Main {
       }
    }
 
-   public static void printoutMessage (String messageToPrint) {
+   public static void printoutMessage(String messageToPrint) {
       System.out.println(messageToPrint);
    }
 }
