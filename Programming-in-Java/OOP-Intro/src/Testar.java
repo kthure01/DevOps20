@@ -1,13 +1,14 @@
 public class Testar implements ITest1 {
 
 
-   public static void main(String[] args) {
-      Testar testar = new Testar();
-      ITest1 test1 = new Testar();
+//   public static void main(String[] args) {
+//      Testar testar = new Testar();
+//      ITest1 test1 = new Testar();
+//
+//      test1.metod1();
+//      testar.metod2();
+//   }
 
-      test1.metod1();
-      testar.metod2();
-   }
 
    public void metod4() {
       System.out.println(new Object() {
