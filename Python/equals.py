@@ -52,11 +52,7 @@ The number 5 is odd
 def app_even_or_odd():
     number = int(input("Ange ett nummer: "))
 
-    if number % 2 == 0:
-        msg = "jämt"
-    else:
-        msg = "ojämt"
-
+    msg = "jämt" if number % 2 == 0 else "ojämt"
     print(f"Nummer {number} är {msg}")
 
 # app_even_or_odd()
@@ -163,9 +159,36 @@ def app_weekday():
 
 # app_weekday()
 
+'''Leap year
+Write an app that takes a year as input and checks whether it is a leap year. When printing output include the given year and the result
+• A leap year is divisible by 4 and not divisible by 100
+• A leap year is divisible by 4 and divisible by 400
+• 1900 is not a leap year despite being divisible by 4 because it is also divisible by 100
+• 2000 is a leap year because it is divisible by 4 and divisible by 400 despite also being divisible by 100
+Example data:
+2000
+Example output:
+The year 2000 is a leap year
 
+These extra days occur in each year which is an integer multiple of 4
+(except for years evenly divisible by 100, which are not leap years unless evenly divisible by 400).
+'''
+
+def app_leap_year(year):
+    leap_year = False
     
-        
+    if year % 4 == 0:
+        leap_year = True
+
+        if year % 100 == 0 and year % 400 != 0:
+            leap_year = False
+
+    print(f"{year} är {leap_year}") 
+    return leap_year     
+
+# app_leap_year(2000)    
+
+
     
     
 
