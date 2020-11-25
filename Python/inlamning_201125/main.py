@@ -66,3 +66,5 @@ print("Addition: ", check_result(get_sum(number_one, number_two)))
 print("Difference: ", check_result(get_difference(number_one, number_two)))
 print("Product: ", check_result(get_product(number_one, number_two)))
 print("Quotient: ", check_result(get_quotient(number_one, number_two)))
+
+print("Commit 2")
