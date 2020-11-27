@@ -1,13 +1,16 @@
+import time
 import repo.bankomat
-import repo.helper
+import repo.helpers
 import repo.menus
 
 actions = [
-    "Deposit money",
-    "Withdraw money",
-    "Check balance",
-    "Collect interest",
-    "End program",
+    (0, "Dummy", "Dummy"),
+    (1, "Deposit money", "deposit"),
+    (2, "Withdraw money", "withdraw"),
+    (3, "Check balance", "get_balance"),
+    (4, "Collect interest", "collect_interest"),
+    (5, "Print log", "print_log"),
+    (6, "End program", "end"),
 ]
 
 
@@ -25,23 +28,55 @@ def get_pin_code():
     return input_pin
 
 
-def main():
+def cash_machine_setup():
+    global bankomat
     bankomat = repo.bankomat.Cash_machine(2345, 10921)
-    repo.helper.clear()
+
+
+def prepare_menus():
+    global menu_action
     menu_action = repo.menus.Menu(actions)
 
+
+def main():
+    repo.helpers.clear()
     menu_start()
+    cash_machine_setup()
+    prepare_menus()
 
-    if not bankomat.get_pin():
-        print("Sorry! Exiting the program!!!")
-        exit(-1)
+    bankomat.get_pin()
 
-    repo.helper.clear()
-    menu_action.print_menu()
-    menu_action.get_user_input()
+    continue_to_run = True
 
-    # main()
-    # input("VÄNTA")
+    while continue_to_run:
+        repo.helpers.clear()
+        menu_action.print_menu()
+        menu_action.get_user_input()
+
+        if menu_action.users_choice == -1:
+            print("Sorry! Wrong choice.")
+            time.sleep(1)
+            continue
+
+        if menu_action.users_choice == 1:
+            amount = input("Enter amount to deposit: ")
+            bankomat.call_function(menu_action.get_function_to_run(), amount)
+        elif menu_action.users_choice == 2:
+            amount = input("Enter amount to withdraw: ")
+            bankomat.call_function(menu_action.get_function_to_run(), amount)
+        elif menu_action.users_choice == 3:
+            print(bankomat.call_function(menu_action.get_function_to_run(), amount))
+            input("Press ENTER to continue")
+        elif menu_action.users_choice == 4:
+            bankomat.call_function(menu_action.get_function_to_run(), amount)
+        elif menu_action.users_choice == 5:
+            bankomat.call_function(menu_action.get_function_to_run(), amount)
+            input("Press ENTER to continue")
+        elif menu_action.users_choice == 6:
+            print("Exit the program...")
+            continue_to_run = False
+
+    exit(0)
 
 
 if __name__ == '__main__':
