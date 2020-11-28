@@ -1,4 +1,4 @@
-class Menu():
+class Menu:
     def __init__(self, menu):
         self.menu_items = menu
         self.users_item_choice = None
@@ -9,10 +9,10 @@ class Menu():
                 print(f"{item[0]:2}) {item[1]}")
 
     def get_menu_size(self):
-        return len(self.menu_items) - 1  # Skip Dummy item
+        return len(self.menu_items) - 1  # Skippar Dummy-raden
 
     def get_user_input(self):
-        user_choice = input(f"Enter your choice [{self.menu_items[1][0]}-{self.get_menu_size()}]: ")
+        user_choice = input(f"Enter your choice ({self.menu_items[1][0]}-{self.get_menu_size()}) [6]: ") or "6"
 
         if self.validate_input(user_choice):
             self.users_item_choice = self.menu_items[int(user_choice)]
