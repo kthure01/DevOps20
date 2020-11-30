@@ -77,39 +77,37 @@ def upper_tri(row_number):
 
 def multiplication(number):
     lista = []
-    tmp_str = ''
     for row in range(1, number + 1):
+        tmp_str = []
         for item in range(1, number + 1):
-            tmp_str += "{} ".format(str(row * item))
+            tmp_str.append(row * item)
 
-        lista.append([tmp_str])
-        tmp_str = ''
+        lista.append(tmp_str)
 
-    # for row in lista:
-    #     print(*row, sep=" ")
-
-    row_format = "{:<2}" * (len(lista) + 1)
-    print(row_format.format(*lista))
-    # for team, row in zip(lista, data):
-    #     print(row_format.format(team, *row))
+    row_format = "{:<3} " * (len(lista) + 1)
+    for row in lista:
+        print(row_format.format('', *row))
 
 
 def main():
-    print("1) Skriv ut en triangel")
-    print("2) Skriv ut en tri-force")
-    print("3) Skriv ut en plutifikationstabell")
-    str = input("Välj: ")
+    while True:
+        print("1) Skapa en triangel")
+        print("2) Skapa en tri-force")
+        print("3) Skapa en plutifikationstabell")
+        str = input("Välj: ")
 
-    if '1' in str:
-        triangle(int(input("Ange antal rader att skriva ut: : ")))
-    elif '2' in str:
-        tri_force(int(input("Ange antal rader att skriva ut: : ")))
-    elif '3' in str:
-        pass
-    else:
-        exit()
+        if '1' in str:
+            triangle(int(input('Ange antal rader att skriva ut: : ')))
+        elif '2' in str:
+            tri_force(int(input("Ange antal rader att skriva ut: : ")))
+        elif '3' in str:
+            multiplication(int(input("Ange ett tal för tabellen: ")))
+        else:
+            exit()
+
+        input('Press ENTER to continue: ')
 
 
 if __name__ == '__main__':
-    multiplication(10)
-    # main()
+    # multiplication(10)
+    main()
