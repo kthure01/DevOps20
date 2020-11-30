@@ -1,8 +1,6 @@
 import math
 
 char_list = ['0', 'i', ' ']
-rows = 10
-width = rows + (rows - 1)
 
 
 def swap_char():
@@ -76,16 +74,19 @@ def upper_tri(row_number):
 
 
 def multiplication(number):
-    lista = []
-    for row in range(1, number + 1):
-        tmp_str = []
-        for item in range(1, number + 1):
-            tmp_str.append(row * item)
+    table_list = []
+    for num1 in range(1, number + 1):
+        tmp_list = [num1 * num2 for num2 in range(1, number + 1)]
+        table_list.append(tmp_list)
 
-        lista.append(tmp_str)
+    return table_list
 
-    row_format = "{:<3} " * (len(lista) + 1)
-    for row in lista:
+
+def print_multiplication_table(number):
+    table_list = multiplication(number)
+
+    row_format = "{:<3} " * (len(table_list) + 1)
+    for row in table_list:
         print(row_format.format('', *row))
 
 
@@ -94,14 +95,14 @@ def main():
         print("1) Skapa en triangel")
         print("2) Skapa en tri-force")
         print("3) Skapa en plutifikationstabell")
-        str = input("Välj: ")
+        choice = input("Välj: ")
 
-        if '1' in str:
+        if '1' in choice:
             triangle(int(input('Ange antal rader att skriva ut: : ')))
-        elif '2' in str:
+        elif '2' in choice:
             tri_force(int(input("Ange antal rader att skriva ut: : ")))
-        elif '3' in str:
-            multiplication(int(input("Ange ett tal för tabellen: ")))
+        elif '3' in choice:
+            print_multiplication_table(int(input("Ange ett tal för tabellen: ")))
         else:
             exit()
 
