@@ -1,0 +1,8 @@
+[Unit]
+Description= Foo
+
+[Service]
+ExecStart=/usr/bin/python3 /home/kthure01/GitHub/DevOps20/Python/triforce/my_service.py
+
+[Instal]
+WantedBy=multi-user.target
