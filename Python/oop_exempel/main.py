@@ -1,5 +1,4 @@
 import time
-import datetime
 
 from repo.recept_budapest import Recept_Pa_En_Budapest_Rulle as recept
 
@@ -44,7 +43,6 @@ def main():
         kaka.stryk_pa_gradde(tartbotten)
 
         kaka.dela_rulltartan()
-
 
     print('\nDessa kakor har du bakat:')
     for kaka1 in en_lista_med_kakor:

@@ -11,8 +11,6 @@ class Recept_Pa_En_Budapest_Rulle(Fast_utrustning, Los_utrustning_i_koket):
     """Detta är ett recept på Budapestrulle"""
 
     # Ingredienserna för att baka en rulle
-    kakans_nummer = 0
-    kakan_bakades = 0
     antal_rullar = 1
     strosocker = 90 + 90
     hasselnotsmjol = 70

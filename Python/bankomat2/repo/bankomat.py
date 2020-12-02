@@ -6,18 +6,18 @@ class Atm:
     def __init__(self, pin, balance):
         self.pin = pin
         self.balance = balance
-        self.loggbook = []
+        self.transaction_log = []
         self.old_balance = 0
-        self.add_to_log("+", balance)
+        self.add_transaction("+", balance)
 
     def deposit(self, amount):
         self.balance += amount
-        self.add_to_log("+", amount)
+        self.add_transaction("+", amount)
 
     def withdraw(self, amount):
         if self.balance >= amount:
             self.balance -= amount
-            self.add_to_log("-", amount)
+            self.add_transaction("-", amount)
 
     def get_balance(self):
         return self.balance
@@ -34,16 +34,16 @@ class Atm:
 
         self.old_balance = self.balance
         self.balance *= interest
-        self.add_to_log("+", self.balance - self.old_balance)
+        self.add_transaction("+", self.balance - self.old_balance)
 
-    def add_to_log(self, sign, amount):
-        self.loggbook.append((repo.helpers.get_timestamp(), sign, amount, self.balance))
+    def add_transaction(self, sign, amount):
+        self.transaction_log.append((repo.helpers.get_timestamp(), sign, amount, self.balance))
 
     def print_log(self):
         print("\n{0:8} {1:^3} {2:>9} {3:>9}".format("time", "+/-", "amount", "balance"))
         print("{0} {1} {2} {3}".format("-" * 8, "-" * 3, "-" * 9, "-" * 9))
 
-        for item in self.loggbook:
+        for item in self.transaction_log:
             print("{0:8} {1:^3} {2:>9} {3:>9}".format(item[0], item[1], item[2], item[3]))
 
     def call_function(self, function_name, amount):
