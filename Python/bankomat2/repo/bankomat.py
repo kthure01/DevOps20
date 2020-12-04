@@ -1,28 +1,35 @@
-import repo.helpers
+import repo.helpers as helpers
 
 
 class Atm:
+    transaction_string_format = "{0:19} {1:>9} {2:>9}"
+    number_of_pin_tries = 3
 
     def __init__(self, pin, balance):
         self.pin = pin
         self.balance = balance
-        self.transaction_log = []
-        self.old_balance = 0
-        self.add_transaction("+", balance)
+        self.transaction_file = 'transaction.log'
+        log = self.open_transaction_log(open_mode='w')  # Open a new transaction log
+        log.write('New transaction log created: {0}\n'.format(helpers.get_timestamp()))
+        log.close()
+        self.add_transaction(balance, balance)
 
     def deposit(self, amount):
         self.balance += amount
-        self.add_transaction("+", amount)
+        self.add_transaction(amount, self.balance)
 
     def withdraw(self, amount):
         if self.balance >= amount:
             self.balance -= amount
-            self.add_transaction("-", amount)
+        else:
+            amount = 0
+
+        self.add_transaction(-amount, self.balance)
 
     def get_balance(self):
         return self.balance
 
-    def collect_interest(self):
+    def calculate_interest(self):
         interest = 2
 
         if self.balance >= 10001:
@@ -32,19 +39,32 @@ class Atm:
         elif self.balance >= 1001:
             interest = 3
 
-        self.old_balance = self.balance
-        self.balance *= interest
-        self.add_transaction("+", self.balance - self.old_balance)
+        self.deposit(self.balance * interest)
 
-    def add_transaction(self, sign, amount):
-        self.transaction_log.append((repo.helpers.get_timestamp(), sign, amount, self.balance))
+    def open_transaction_log(self, open_mode='r', encoding='utf-8'):
+        return open(self.transaction_file, mode=open_mode, encoding=encoding)
 
-    def print_log(self):
-        print("\n{0:8} {1:^3} {2:>9} {3:>9}".format("time", "+/-", "amount", "balance"))
-        print("{0} {1} {2} {3}".format("-" * 8, "-" * 3, "-" * 9, "-" * 9))
+    def add_transaction(self, amount, new_balance):
+        log_file = self.open_transaction_log(open_mode='a')
+        log_string = '{0} | {1} | {2}\n'.format(helpers.get_timestamp(), str(amount), str(new_balance))
+        log_file.writelines(log_string)
+        log_file.close()
 
-        for item in self.transaction_log:
-            print("{0:8} {1:^3} {2:>9} {3:>9}".format(item[0], item[1], item[2], item[3]))
+    def print_transaction_log(self):
+        print('\n' + self.transaction_string_format.format("Time", "Amount", "Balance"))
+        print(self.transaction_string_format.format("-" * 19, "-" * 9, "-" * 9))
+
+        lines = self.get_a_list_of_transactions()
+
+        for line in range(1, lines.__len__()):
+            tmp = lines[line].split(' | ')
+            print(self.transaction_string_format.format(tmp[0], tmp[1], tmp[2].strip('\n')))
+
+    def get_a_list_of_transactions(self):
+        log_file = self.open_transaction_log()
+        lines = log_file.readlines()
+        log_file.close()
+        return lines
 
     def call_function(self, function_name, amount):
         method_to_run = getattr(self, function_name, None)

@@ -2,9 +2,11 @@ import datetime
 import os
 
 
+# För att rensa terminalen
 def clear():
-    os.system('export TERM=xterm; clear')  # För att rensa terminalen
+    os.system('export TERM=xterm; clear')
 
 
+# Tid som YYYY-MM-DD HH:mm:ss
 def get_timestamp():
-    return datetime.datetime.now().strftime("%H:%M:%S")  # Tid som t.ex 08:13:45
+    return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
