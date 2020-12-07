@@ -1,16 +1,15 @@
-# Ärver (inherit) den utrustningen som behövs för bakningen av detta recept
 import datetime
 
-from repo.fast_utrustning import Fast_utrustning
-from repo.los_utrustning import Los_utrustning_i_koket
+from repo.fastutrustning import FastUtrustning
+from repo.los_utrustning import LosUtrustningIKoket
 
 
 # För att kunna baka så behöver vi lite övrig utrustning från köket.
-# Denna utrustning "ärver (inherit)" vi in från 2 abstrakta klasser.
-class Recept_Pa_En_Budapest_Rulle(Fast_utrustning, Los_utrustning_i_koket):
+# Denna utrustning "ärver (inherit)" vi in från 2 klasser.
+class ReceptPaEnBudapestrulle(FastUtrustning, LosUtrustningIKoket):
     """Detta är ett recept på Budapestrulle"""
 
-    # Ingredienserna för att baka en rulle
+    # Grundrecept för att baka en rulle
     antal_rullar = 1
     strosocker = 90 + 90
     hasselnotsmjol = 70
@@ -24,9 +23,8 @@ class Recept_Pa_En_Budapest_Rulle(Fast_utrustning, Los_utrustning_i_koket):
     ugns_temperatur = 170
 
     def __init__(self, kakans_nummer):
-        super().__init__()  # Denna rad behövs pga av att vi ärver från andra klasser
         self.kakans_nummer = kakans_nummer
-        self.kakan_bakades = datetime.datetime.now()
+        self.kakan_borjar_bakas = datetime.datetime.now()
 
     # Denna metod är nåbar utan instantiering av klassen
     @staticmethod
@@ -35,24 +33,27 @@ class Recept_Pa_En_Budapest_Rulle(Fast_utrustning, Los_utrustning_i_koket):
         return int(input('Hur många rullar vill du baka? [1]:') or '1')
 
     def skriv_ut_ingredienserna(self):
+        print(f'Kaka nr. {self.kakans_nummer} som började bakas kl. {self.kakan_borjar_bakas}')
         print(f'Socker: {self.strosocker}g')
         print(f'Hasselnötsmjöl: {self.hasselnotsmjol}g')
         print(f'Majsstärkelse: {self.majsstarkelse}g')
         print(f'Äggvita: {self.aggvita}g')
         print(f'Grädde: {self.gradde}g')
         print(f'Apelsin: {self.apelsin}g')
-        print(f'Fäsrka hallon: {self.farska_hallon}g')
+        print(f'Färska hallon: {self.farska_hallon}g')
         print(f'Mörk choklad: {self.mork_choklad}g')
 
     def starta_ugnen(self):
-        print(f'\n1) Sätt {self.ugn} på {self.stall_in_ugns_temparatur(self.ugns_temperatur)}.', end=' ')
-        print(f'Lägg {self.bakplatspapper} på {self.bakplat}')
+        print(f'\n1) Sätt {self.ugn} på {self.ugns_temperatur} grader.')
+        self.stall_in_ugns_temparatur(self.ugns_temperatur)
+        print(f'   Ugnen är nu {self.ugnstemperatur} grader.')
+        print(f'   Lägg {self.bakplatspapper} på {self.bakplat}.')
 
     # Returnerar blandningen av de torra ingredienserna
     def blanda_torra_ingredisenser(self):
         print(f'\n2) Blanda hälften av strösockret ({self.strosocker / 2}g),', end=' ')
-        print(f'hasselnötsmjöl ({self.hasselnotsmjol}g) och maizena ({self.majsstarkelse}g)')
-        print(f'   i {self.bunke}')
+        print(f'hasselnötsmjöl ({self.hasselnotsmjol}g) och maizena ({self.majsstarkelse}g)', end=' ')
+        print(f'i {self.bunke}.')
 
         return 'torra ingredienserna'
 
@@ -70,7 +71,7 @@ class Recept_Pa_En_Budapest_Rulle(Fast_utrustning, Los_utrustning_i_koket):
         print(f'   tätt på {self.bakplatspapper} eller tills {smet} tar slut.')
 
     def gradda(self):
-        print(f'\n5) Grädda mitt i {self.ugn} på {self.ugns_temperatur} grader i 20 min,')
+        print(f'\n5) Grädda mitt i {self.ugn} på {self.ugnstemperatur} grader i 20 min,')
         print(f'   lufta {self.ugn} några sekunder och baka ytterligare 2 min.')
 
     # Returnerar den färdigbakade botten
@@ -104,4 +105,4 @@ class Recept_Pa_En_Budapest_Rulle(Fast_utrustning, Los_utrustning_i_koket):
         return 'smält mörk choklad'
 
     def skriv_ut_tid_och_nummer(self):
-        print(f'Kaka nr: {self.kakans_nummer} är klar. Den bakades: {self.kakan_bakades}. Objektid: {id(self)}')
+        print(f'Kaka nr: {self.kakans_nummer} är klar. Den bakades: {self.kakan_borjar_bakas}. Objektid: {id(self)}')
