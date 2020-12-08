@@ -13,13 +13,13 @@ balance_for_testing = 103_024
 # Lista med tuples för huvudmenyn
 # Numrering, Text som skrivs ut, Metod som är kopplad till menyvalet
 main_menu_repo = [
-    (0, "Main menu: Select what you want to do.", "Not-in-use"),
-    (1, "Deposit money", "deposit"),
-    (2, "Withdraw money", "withdraw"),
-    (3, "Check balance", "get_balance"),
-    (4, "Collect interest", "calculate_interest"),
-    (5, "Print log", "print_transaction_log"),
-    (6, "End program", "end"),
+    [0, "Main menu: Select what you want to do.", "Not-in-use"],
+    [1, "Deposit money", "deposit"],
+    [2, "Withdraw money", "withdraw"],
+    [3, "Check balance", "get_balance"],
+    [4, "Collect interest", "calculate_interest"],
+    [5, "Print log", "print_transaction_log"],
+    [6, "End program", "end"],
 ]
 
 
