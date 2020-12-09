@@ -36,7 +36,7 @@ biome stability, the same pattern repeats to the right many times:
 .#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#  --->
 
 You start on the open square (.) in the top-left corner and need to reach the bottom
-(below the bottom-most row on your map).
+(below the bottom-most line on your map).
 
 The toboggan can only follow a few specific slopes (you opted for a cheaper model that prefers rational numbers);
 start by counting all the trees you would encounter for the slope right 3, down 1:
@@ -147,7 +147,7 @@ def part3(x_move, y_move):
             work_str_as_list[x_move_cnt] = 'X'
 
         x_move_cnt += x_move
-        print(num, tree_cnt, work_str_as_list)
+        # print(num, tree_cnt, work_str_as_list)
 
     return tree_cnt
 
