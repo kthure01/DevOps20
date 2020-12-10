@@ -135,6 +135,8 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
 
 Count the number of valid passports - those that have all required fields and valid values.
 Continue to treat cid as optional. In your batch file, how many passports are valid?
+
+answer = 156
 '''
 
 raw_filefile = open("input.txt").readlines()
@@ -196,22 +198,16 @@ def part2():
             if key == 'byr':
                 if 1920 <= int(value) <= 2002:
                     valid += 1
-                else:
-                    print(cnt, key, passport)
 
             # iyr (Issue Year) - four digits; at least 2010 and at most 2020
             elif key == 'iyr':
                 if 2010 <= int(value) <= 2020:
                     valid += 1
-                else:
-                    print(cnt, key, passport)
 
             # eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
             elif key == 'eyr':
                 if 2020 <= int(value) <= 2030:
                     valid += 1
-                else:
-                    print(cnt, key, passport)
 
             # hgt (Height) - a number followed by either cm or in:
             #         If cm, the number must be at least 150 and at most 193.
@@ -221,46 +217,36 @@ def part2():
                     h = value.split('cm')
                     if 150 <= int(h[0]) <= 193:
                         valid += 1
-                    else:
-                        print(cnt, key, passport)
+
                 elif 'in' in value:
                     h = value.split('in')
                     if 59 <= int(h[0]) <= 76:
                         valid += 1
-                    else:
-                        print(cnt, key, passport)
 
             # hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
             elif key == 'hcl':
                 x = re.search('#[0-9a-f]{6}', value)
                 if x:
                     valid += 1
-                else:
-                    print(cnt, key, passport)
 
             # ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
             elif key == 'ecl':
                 x = re.search('(amb|blu|brn|gry|grn|hzl|oth){1}', value)
                 if x:
                     valid += 1
-                else:
-                    print(cnt, key, passport)
 
             # pid (Passport ID) - a nine-digit number, including leading zeroes.
             elif key == 'pid':
                 x = re.search('[0-9]{9}', value)
                 if x:
-                    valid += 1
-                else:
-                    print(cnt, key, passport)
+                    if len(value) == 9:
+                        valid += 1
+
             elif key == 'cid':
                 valid += 1
 
         if valid == len(passport):
             valid_passports_cnt += 1
-        # else:
-        #      print(cnt, passport)
-
 
     print('2: Number of valid passports:', valid_passports_cnt)
 
