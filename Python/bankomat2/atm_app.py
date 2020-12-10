@@ -1,8 +1,8 @@
 import time
 
 import repo.bankomat as bankomat
-import repo.helpers as helpers
 import repo.menus as menus
+from repo.helpers import Helpers
 
 # Lite globala variabler
 number_of_pin_tries = 3
@@ -10,7 +10,7 @@ valid_pin_length = [4, 6]
 pin_code_for_testing = '2345'
 balance_for_testing = 103_024
 
-# Lista med tuples för huvudmenyn
+# Lista för huvudmenyn
 # Numrering, Text som skrivs ut, Metod som är kopplad till menyvalet
 main_menu_repo = [
     [0, "Main menu: Select what you want to do.", "Not-in-use"],
@@ -78,7 +78,7 @@ def main():
     new_atm = bankomat.Atm(int(pin_code_for_testing), balance_for_testing)
     main_menu = menus.Menu(main_menu_repo)
 
-    helpers.clear()
+    Helpers().clear()
     print("Welcome to the bank of Zeros and Ones")
 
     if not get_pin_code(new_atm):
@@ -87,7 +87,7 @@ def main():
         exit(1)
 
     while True:
-        helpers.clear()
+        Helpers().clear()
         main_menu.print_menu()
         main_menu.get_user_input()
 

@@ -1,4 +1,4 @@
-import repo.helpers as helpers
+from repo.helpers import Helpers
 
 
 class Atm:
@@ -10,13 +10,13 @@ class Atm:
         self.balance = balance
         self.transaction_file = 'transaction.log'
         log = self.open_transaction_log(open_mode='w')  # Open a new transaction log
-        log.write('New transaction log created: {0}\n'.format(helpers.get_timestamp()))
+        log.write('New transaction log created: {0}\n'.format(Helpers().get_timestamp()))
         log.close()
-        self.add_transaction(balance, balance)
+        self.log_transaction(balance, balance)
 
     def deposit(self, amount):
         self.balance += amount
-        self.add_transaction(amount, self.balance)
+        self.log_transaction(amount, self.balance)
 
     def withdraw(self, amount):
         if self.balance >= amount:
@@ -24,7 +24,7 @@ class Atm:
         else:
             amount = 0
 
-        self.add_transaction(-amount, self.balance)
+        self.log_transaction(-amount, self.balance)
 
     def get_balance(self):
         return self.balance
@@ -44,9 +44,9 @@ class Atm:
     def open_transaction_log(self, open_mode='r', encoding='utf-8'):
         return open(self.transaction_file, mode=open_mode, encoding=encoding)
 
-    def add_transaction(self, amount, new_balance):
+    def log_transaction(self, amount, new_balance):
         log_file = self.open_transaction_log(open_mode='a')
-        log_string = '{0} | {1} | {2}\n'.format(helpers.get_timestamp(), str(amount), str(new_balance))
+        log_string = '{0} | {1} | {2}\n'.format(Helpers().get_timestamp(), str(amount), str(new_balance))
         log_file.writelines(log_string)
         log_file.close()
 
@@ -58,7 +58,7 @@ class Atm:
 
         for line in range(1, lines.__len__()):
             tmp = lines[line].split(' | ')
-            print(self.transaction_string_format.format(tmp[0], tmp[1], tmp[2].strip('\n')))
+            print(self.transaction_string_format.format(tmp[0], tmp[1], tmp[2].strip()))
 
     def get_a_list_of_transactions(self):
         log_file = self.open_transaction_log()

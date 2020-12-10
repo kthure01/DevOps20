@@ -1,3 +1,5 @@
+import re
+
 '''
 --- Day 4: Passport Processing ---
 
@@ -62,9 +64,11 @@ The first half of this puzzle is complete! It provides one gold star: *
 
 --- Part Two ---
 
-The line is moving more quickly now, but you overhear airport security talking about how passports with invalid data are getting through. Better add some data validation, quick!
+The line is moving more quickly now, but you overhear airport security talking about how passports with invalid
+data are getting through. Better add some data validation, quick!
 
-You can continue to ignore the cid field, but each other field has strict rules about what values are valid for automatic validation:
+You can continue to ignore the cid field, but each other field has strict rules about what values are valid for
+automatic validation:
 
     byr (Birth Year) - four digits; at least 1920 and at most 2002.
     iyr (Issue Year) - four digits; at least 2010 and at most 2020.
@@ -77,7 +81,8 @@ You can continue to ignore the cid field, but each other field has strict rules 
     pid (Passport ID) - a nine-digit number, including leading zeroes.
     cid (Country ID) - ignored, missing or not.
 
-Your job is to count the passports where all required fields are both present and valid according to the above rules. Here are some example values:
+Your job is to count the passports where all required fields are both present and valid according to the above rules.
+Here are some example values:
 
 byr valid:   2002
 byr invalid: 2003
@@ -128,49 +133,136 @@ eyr:2022
 
 iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
 
-Count the number of valid passports - those that have all required fields and valid values. Continue to treat cid as optional. In your batch file, how many passports are valid?
-
+Count the number of valid passports - those that have all required fields and valid values.
+Continue to treat cid as optional. In your batch file, how many passports are valid?
 '''
 
-file = open("input.txt")
+raw_filefile = open("input.txt").readlines()
 
 passport_list = []
 tmp = list()
 cnt = 0
+valid_passports = []
 
-for line in file:
-    cnt += 1
-    if cnt > 988:
-        k = ''
+for num in range(len(raw_filefile)):
+    line = raw_filefile[num].strip()
 
-    line = line.strip()
     if len(line) > 0:
         if ' ' in line:
             for x in line.split(' '):
                 tmp.append(x)
         else:
             tmp.append(line)
-    else:
+
+    if len(line) == 0 or num == len(raw_filefile) - 1:
+        tmp.sort()
         passport_list.append(tmp.copy())
         tmp.clear()
 
-kk = ''
-
 
 def part1():
-    valid_passports = 0
     for item in passport_list:
         tmpstr = ' '.join(item)
-        if len(item) < 7:
-            print(1, len(item), item)
-        elif len(item) == 8:
-            valid_passports += 1
-        elif len(item) == 7 and 'cid:' not in tmpstr:
-            valid_passports += 1
-        else:
-            print(2, len(item), item)
 
-    print(valid_passports)
+        if len(item) == 8 or len(item) == 7 and 'cid:' not in tmpstr:
+            # print(item)
+            valid_passports.append(item)
+
+    print('1: Number of valid passports:', len(valid_passports))
 
 
-part1()
+def part2():
+    part1()
+
+    passport_dict = {}
+    valid_passports_cnt = 0
+
+    for num in range(len(valid_passports)):
+        tmp = {}
+        for item in valid_passports[num]:
+            key_value = item.split(':')
+            tmp[key_value[0]] = key_value[1]
+
+        passport_dict[num] = tmp.copy()
+        tmp.clear()
+
+    cnt = 0
+    for passport in passport_dict.values():
+        valid = 0
+        cnt += 1
+
+        for key, value in passport.items():
+            # byr (Birth Year) - four digits; at least 1920 and at most 2002.
+            if key == 'byr':
+                if 1920 <= int(value) <= 2002:
+                    valid += 1
+                else:
+                    print(cnt, key, passport)
+
+            # iyr (Issue Year) - four digits; at least 2010 and at most 2020
+            elif key == 'iyr':
+                if 2010 <= int(value) <= 2020:
+                    valid += 1
+                else:
+                    print(cnt, key, passport)
+
+            # eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
+            elif key == 'eyr':
+                if 2020 <= int(value) <= 2030:
+                    valid += 1
+                else:
+                    print(cnt, key, passport)
+
+            # hgt (Height) - a number followed by either cm or in:
+            #         If cm, the number must be at least 150 and at most 193.
+            #         If in, the number must be at least 59 and at most 76.
+            elif key == 'hgt':
+                if 'cm' in value:
+                    h = value.split('cm')
+                    if 150 <= int(h[0]) <= 193:
+                        valid += 1
+                    else:
+                        print(cnt, key, passport)
+                elif 'in' in value:
+                    h = value.split('in')
+                    if 59 <= int(h[0]) <= 76:
+                        valid += 1
+                    else:
+                        print(cnt, key, passport)
+
+            # hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
+            elif key == 'hcl':
+                x = re.search('#[0-9a-f]{6}', value)
+                if x:
+                    valid += 1
+                else:
+                    print(cnt, key, passport)
+
+            # ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
+            elif key == 'ecl':
+                x = re.search('(amb|blu|brn|gry|grn|hzl|oth){1}', value)
+                if x:
+                    valid += 1
+                else:
+                    print(cnt, key, passport)
+
+            # pid (Passport ID) - a nine-digit number, including leading zeroes.
+            elif key == 'pid':
+                x = re.search('[0-9]{9}', value)
+                if x:
+                    valid += 1
+                else:
+                    print(cnt, key, passport)
+            elif key == 'cid':
+                valid += 1
+
+        if valid == len(passport):
+            valid_passports_cnt += 1
+        # else:
+        #      print(cnt, passport)
+
+
+    print('2: Number of valid passports:', valid_passports_cnt)
+
+
+part2()
