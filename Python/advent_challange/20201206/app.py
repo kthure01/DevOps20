@@ -1,18 +1,26 @@
+'''
 --- Day 6: Custom Customs ---
 
-As your flight approaches the regional airport where you'll switch to a much larger plane, customs declaration forms are distributed to the passengers.
+As your flight approaches the regional airport where you'll switch to a much larger plane, customs declaration
+forms are distributed to the passengers.
 
-The form asks a series of 26 yes-or-no questions marked a through z. All you need to do is identify the questions for which anyone in your group answers "yes". Since your group is just you, this doesn't take very long.
+The form asks a series of 26 yes-or-no questions marked a through z. All you need to do is identify the questions
+for which anyone in your group answers "yes". Since your group is just you, this doesn't take very long.
 
-However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help. For each of the people in their group, you write down the questions for which they answer "yes", one per line. For example:
+However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help.
+For each of the people in their group, you write down the questions for which they answer "yes", one per line.
+For example:
 
 abcx
 abcy
 abcz
 
-In this group, there are 6 questions to which anyone answered "yes": a, b, c, x, y, and z. (Duplicate answers to the same question don't count extra; each question counts at most once.)
+In this group, there are 6 questions to which anyone answered "yes": a, b, c, x, y, and z. (Duplicate answers to
+the same question don't count extra; each question counts at most once.)
 
-Another group asks for your help, then another, and eventually you've collected answers from every group on the plane (your puzzle input). Each group's answers are separated by a blank line, and within each group, each person's answers are on a single line. For example:
+Another group asks for your help, then another, and eventually you've collected answers from every group on the plane
+(your puzzle input). Each group's answers are separated by a blank line, and within each group, each person's
+answers are on a single line. For example:
 
 abc
 
@@ -41,3 +49,112 @@ This list represents answers from five groups:
 In this example, the sum of these counts is 3 + 3 + 3 + 1 + 1 = 11.
 
 For each group, count the number of questions to which anyone answered "yes". What is the sum of those counts?
+
+Your puzzle answer was 6430.
+
+The first half of this puzzle is complete! It provides one gold star: *
+
+--- Part Two ---
+
+As you finish the last group's customs declaration, you notice that you misread one word in the instructions:
+
+You don't need to identify the questions to which anyone answered "yes"; you need to identify the questions to which everyone answered "yes"!
+
+Using the same example as above:
+
+abc
+
+a
+b
+c
+
+ab
+ac
+
+a
+a
+a
+a
+
+b
+
+This list represents answers from five groups:
+
+    In the first group, everyone (all 1 person) answered "yes" to 3 questions: a, b, and c.
+    In the second group, there is no question to which everyone answered "yes".
+    In the third group, everyone answered yes to only 1 question, a. Since some people did not answer "yes" to b or c, they don't count.
+    In the fourth group, everyone answered yes to only 1 question, a.
+    In the fifth group, everyone (all 1 person) answered "yes" to 1 question, b.
+
+In this example, the sum of these counts is 3 + 0 + 1 + 1 + 1 = 6.
+
+For each group, count the number of questions to which everyone answered "yes". What is the sum of those counts?
+answer = 3125
+'''
+
+raw_file = open("input.txt").readlines()
+
+list_of_answers = []
+tmp = []
+for num in range(len(raw_file)):
+    line = raw_file[num].strip()
+
+    if len(line) > 0:
+        if ' ' in line:
+            for x in line.split(' '):
+                tmp.append(x)
+        else:
+            tmp.append(line)
+
+    if len(line) == 0 or num == len(raw_file) - 1:
+        tmp.sort()
+        list_of_answers.append(tmp.copy())
+        tmp.clear()
+
+
+def part1():
+    answers = []
+    # ['brlyvoexnjtgcz', 'lnbgtxvoiyecjrz', 'ybcgtxznorvjel']
+    for x in list_of_answers:
+        tmp_dict = {}
+
+        # 'brlyvoexnjtgcz'
+        for y in x:
+            # varje bokstav
+            for n in y:
+                tmp_dict[n] = 1
+
+        answers.append(int(tmp_dict.__len__()))
+
+    ans = sum(answers)
+    print('Svar del 1:', ans)
+
+
+def part2():
+    answers = []
+    # ['brlyvoexnjtgcz', 'lnbgtxvoiyecjrz', 'ybcgtxznorvjel']
+    for x in list_of_answers:
+        tmp_dict = {}
+        cnt = 0
+
+        # 'brlyvoexnjtgcz'
+        for y in x:
+            # varje bokstav
+            for n in y:
+                if n not in tmp_dict:
+                    tmp_dict[n] = 1
+                else:
+                    tmp_dict[n] += 1
+
+
+        # cnt = sum(1 for z in tmp_dict.values() if z == len(x))
+        for z in tmp_dict.values():
+            if z == len(x):
+                cnt += 1
+
+        answers.append(int(cnt))
+
+    ans = sum(answers)
+    print('Svar del 2:', ans)
+
+part2()
