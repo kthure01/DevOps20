@@ -50,3 +50,37 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 1 0    * * *   root    /home/kthure01/GitHub/DevOps20/Python/Projekt-Kalender/write-calandar.sh
 #
 kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$
+
+
+============== GIT ==================
+kthure01@W541KUB:~/GitHub/DevOps20$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+(use "git restore --staged <file>..." to unstage)
+new file:   Python/Projekt-Kalender/loggbok.txt
+
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git restore <file>..." to discard changes in working directory)
+modified:   Python/Projekt-Kalender/loggbok.txt
+
+kthure01@W541KUB:~/GitHub/DevOps20$ git add Python/Projekt-Kalender/loggbok.txt
+kthure01@W541KUB:~/GitHub/DevOps20$ git commit -m "Another update"
+[master d872c3f] Another update
+1 file changed, 52 insertions(+)
+create mode 100644 Python/Projekt-Kalender/loggbok.txt
+kthure01@W541KUB:~/GitHub/DevOps20$ git push
+Username for 'https://github.com': kthure01
+Password for 'https://kthure01@github.com':
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.25 KiB | 1.25 MiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kthure01/DevOps20.git
+af1a073..d872c3f  master -> master
+kthure01@W541KUB:~/GitHub/DevOps20$
