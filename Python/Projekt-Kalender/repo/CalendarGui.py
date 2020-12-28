@@ -10,7 +10,7 @@ class CalendarApp:
         self.root.geometry('850x540')
         # self.root.resizable(0, 0)
         self.root.title('Månadskalender med namnsdagar')
-        self.root.option_add('*font', ('verdana', 12, 'bold'))
+        self.root.option_add('*font', ('Helvetica', 12))
         self.month = None
         self.root_frm = None
         self.gui_setup(month)
@@ -42,7 +42,8 @@ class CalendarApp:
 
     def upper_rows_setup(self):
         self.left_btn = Button(self.top_frm, text='<<', command=self.go_back).grid(row=0, column=0)
-        self.center_lbl = Label(self.top_frm, width=30, text=f'{Months(self.month.current_month).name} {self.month.current_year}') \
+        self.center_lbl = Label(self.top_frm, width=30,
+                                text=f'{Months(self.month.current_month).name} {self.month.current_year}') \
             .grid(row=0, column=1)
         self.right_btn = Button(master=self.top_frm, text='>>', command=self.go_forward).grid(row=0, column=2)
 
@@ -64,7 +65,7 @@ class CalendarApp:
         column = 0
         for _, day in enumerate(self.month.get_day_by_day()):
             if column == 0:
-                Label(self.left_frm, width=3, height=4, text=f'v\n{day[1]}',  relief=GROOVE) \
+                Label(self.left_frm, width=3, height=4, text=f'v\n{day[1]}', relief=GROOVE) \
                     .grid(row=row, column=column)
 
             column = int(day[2])
