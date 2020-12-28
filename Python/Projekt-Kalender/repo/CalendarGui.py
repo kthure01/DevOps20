@@ -7,8 +7,8 @@ from repo.Weekdays import Weekdays, Months
 class CalendarApp:
     def __init__(self, master, month):
         self.root = master
-        self.root.geometry('800x540')
-        self.root.resizable(0, 0)
+        self.root.geometry('850x540')
+        # self.root.resizable(0, 0)
         self.root.title('Månadskalender med namnsdagar')
         self.root.option_add('*font', ('verdana', 12, 'bold'))
         self.month = None
