@@ -22,7 +22,7 @@ drwxr-xr-x  2 kthure01 kthure01  4096 nov  1 16:28 Videos
 kthure01@W541KUB:~$ cd GitHub/DevOps20/Python/
 
 kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$ ls
-crontab.txt  loggbok.txt  __main__.py  repo  write-calandar.sh
+crontab.txt  loggbok.txt  __main__.py  repo  write-calendar.py
 kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$
 
 kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$ more /etc/crontab
@@ -47,7 +47,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
 47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
 52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
-1 0    * * *   root    /home/kthure01/GitHub/DevOps20/Python/Projekt-Kalender/write-calandar.sh
+1 0    * * *   root    /home/kthure01/GitHub/DevOps20/Python/Projekt-Kalender/write-calendar.py
 #
 kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$
 
