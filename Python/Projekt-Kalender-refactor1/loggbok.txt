@@ -1,0 +1,86 @@
+kthure01@W541KUB:~$ ls -l
+total 80
+drwxrwxr-x  2 kthure01 kthure01  4096 dec  5 16:06 BackupToGit
+drwxr-xr-x  2 kthure01 kthure01  4096 dec  3 18:38 Desktop
+drwxrwxr-x  3 kthure01 kthure01  4096 nov 20 09:25 Docker
+drwxr-xr-x  2 kthure01 kthure01  4096 nov  1 16:28 Documents
+drwxr-xr-x  9 kthure01 kthure01  4096 dec 27 10:34 Downloads
+-rw-rw-r--  1 kthure01 kthure01 13859 dec  3 20:09 get-docker.sh
+drwxrwxr-x 10 kthure01 kthure01  4096 dec  6 15:40 GitHub
+drwxrwxr-x  2 kthure01 kthure01  4096 dec  4 14:49 IdeaProjects
+drwxr-xr-x  2 kthure01 kthure01  4096 nov  1 16:28 Music
+drwxr-xr-x  2 kthure01 kthure01  4096 nov  1 16:28 Pictures
+drwxr-xr-x  2 kthure01 kthure01  4096 nov  1 16:28 Public
+drwxr-xr-x  6 kthure01 kthure01  4096 nov  9 10:14 snap
+-rwxrwxr-x  1 kthure01 kthure01    85 dec 17 13:06 sysd.sh
+drwxr-xr-x  2 kthure01 kthure01  4096 nov  1 16:28 Templates
+drwxrwxr-x  2 kthure01 kthure01  4096 dec 14 10:48 tester
+drwxrwxr-x  5 kthure01 kthure01  4096 nov 19 10:05 venv
+drwxr-xr-x  2 kthure01 kthure01  4096 nov  1 16:28 Videos
+
+
+kthure01@W541KUB:~$ cd GitHub/DevOps20/Python/
+
+kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$ ls
+crontab.txt  loggbok.txt  __main__.py  repo  write-calendar.py
+kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$
+
+kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$ more /etc/crontab
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+1 0    * * *   root    /home/kthure01/GitHub/DevOps20/Python/Projekt-Kalender/write-calendar.py
+#
+kthure01@W541KUB:~/GitHub/DevOps20/Python/Projekt-Kalender$
+
+
+============== GIT ==================
+kthure01@W541KUB:~/GitHub/DevOps20$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+(use "git restore --staged <file>..." to unstage)
+new file:   Python/Projekt-Kalender/loggbok.txt
+
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git restore <file>..." to discard changes in working directory)
+modified:   Python/Projekt-Kalender/loggbok.txt
+
+kthure01@W541KUB:~/GitHub/DevOps20$ git add Python/Projekt-Kalender/loggbok.txt
+kthure01@W541KUB:~/GitHub/DevOps20$ git commit -m "Another update"
+[master d872c3f] Another update
+1 file changed, 52 insertions(+)
+create mode 100644 Python/Projekt-Kalender/loggbok.txt
+kthure01@W541KUB:~/GitHub/DevOps20$ git push
+Username for 'https://github.com': kthure01
+Password for 'https://kthure01@github.com':
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.25 KiB | 1.25 MiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kthure01/DevOps20.git
+af1a073..d872c3f  master -> master
+kthure01@W541KUB:~/GitHub/DevOps20$
