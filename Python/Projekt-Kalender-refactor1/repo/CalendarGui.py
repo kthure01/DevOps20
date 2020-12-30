@@ -11,12 +11,11 @@ class CalendarApp:
         # self.root.resizable(0, 0)
         self.root.title('Månadskalender med namnsdagar')
         self.root.option_add('*font', ('Helvetica', 12))
-        self.month = None
-        self.root_frm = None
-        self.gui_setup(month)
-
-    def gui_setup(self, month):
         self.month = month
+        self.root_frm = None
+        self.gui_setup()
+
+    def gui_setup(self):
         self.frm_setup()
         self.upper_rows_setup()
         self.main_view_setup()
@@ -43,7 +42,7 @@ class CalendarApp:
     def upper_rows_setup(self):
         Button(self.top_frm, text='<<', command=self.go_back).grid(row=0, column=0)
         Label(self.top_frm, width=30,
-              text=f'{Months(self.month.current_month).name} {self.month.current_year}').grid(row=0, column=1)
+              text=f'{Months(self.month.api.month).name} {self.month.api.year}').grid(row=0, column=1)
         Button(master=self.top_frm, text='>>', command=self.go_forward).grid(row=0, column=2)
 
         for cnt, day in enumerate(Weekdays._member_names_):
@@ -53,10 +52,12 @@ class CalendarApp:
                 Label(self.days_frm, width=3).grid(row=0, column=cnt)
 
     def go_back(self):
-        self.gui_setup(self.month.load_previous_month())
+        self.month.load_previous_month()
+        self.gui_setup()
 
     def go_forward(self):
-        self.gui_setup(self.month.load_next_month())
+        self.month.load_next_month()
+        self.gui_setup()
 
     def main_view_setup(self):
         # ('2020-12-01', '49', '2', 'Oskar\nOssian', False, True)

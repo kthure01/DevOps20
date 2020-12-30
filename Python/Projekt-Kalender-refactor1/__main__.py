@@ -1,10 +1,10 @@
 from tkinter import *
-from repo.CalendarGui import CalendarApp
-from repo.Month import Month
-import repo.Utils as Utils
+import repo.CalendarGui as CalendarGui
+import repo.Month as Month
+import repo.api as api
 
 if __name__ == '__main__':
     root = Tk()
-    app = CalendarApp(root, Month(Utils.get_current_year(), Utils.get_current_month()))
+    app = CalendarGui.CalendarApp(root, Month.Month(api.Api()))
 
     root.mainloop()
