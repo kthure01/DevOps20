@@ -1,0 +1,58 @@
+snap install notepad-plus-plus
+snap install --classic code
+sudo apt-get install ./guitar_1.2.0_amd64.deb
+sudo apt-get install ./StarUML_4.0.0_amd64.deb
+
+sudo apt-get install libtext-lorem-perl
+
+bpytop
+dbeaver
+mysql workbench
+vs code
+intelliJ
+pycharm
+
+java
+python
+git
+
+# PyCharm plugin
+atom material icons
+Database navigaator
+edutools
+gradianto
+indent rainbow
+kite ai code
+material theme ui
+rainbow brackets
+sonarlint
+sourcery
+tabnine ai
+dracula theme
+embold
+gruvbox theme
+python community edition
+
+
+# VS Code plugin
+django
+docker
+jinja
+jypyter
+kite ai
+magicpython
+mysql 3.3.1
+mysql 0.4.0
+pylance
+python (microsoft)
+python extension pack
+remote-containers
+sonarlint
+sourcery
+sqltools
+sqltools mysql/mariadb
+tabnine
+visual studio intellicode
+
+
+

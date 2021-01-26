@@ -19,7 +19,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ded348f5-10ae-429b-b6d7-c2a2cffa8a83" name="Default Changelist" comment="update" />
+    <list default="true" id="ded348f5-10ae-429b-b6d7-c2a2cffa8a83" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/../mongodb_exercise2/.idea/mongodb_exercise2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop_exempel/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop_exempel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../oop_exempel/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
