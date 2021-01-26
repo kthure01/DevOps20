@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b29db0b-d90b-4dab-8a3c-0de7c1f91237" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../mongodb_exercise2/.idea/mongodb_exercise2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8b29db0b-d90b-4dab-8a3c-0de7c1f91237" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
