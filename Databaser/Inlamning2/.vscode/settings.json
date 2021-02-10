@@ -1,0 +1,30 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "w530kt",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "w530kt",
+            "database": "mysql",
+            "username": "root",
+            "password": "hemkoala"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "localhost",
+            "database": "mysql",
+            "username": "root",
+            "password": "hemkoala"
+        }
+    ]
+}

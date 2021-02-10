@@ -1,0 +1,30 @@
+_id: req_43b5d2515a594d5aa7ef738a5df3828b
+type: Request
+parentId: fld_4fa215d630424cab83b2da802039a99e
+modified: 1612362127451
+created: 1612362113709
+url: localhost/register
+name: Cesar
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "cesar",
+    	"password": "cesar_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_59f117b31f5d4cd8b7851033064b2a88
+authentication: {}
+metaSortKey: -1612361919474.75
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

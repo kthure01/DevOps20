@@ -1,0 +1,21 @@
+_id: req_wrk_572d180380b542e9b4dfda6cbb9c91349e791e67
+type: Request
+parentId: wrk_572d180380b542e9b4dfda6cbb9c9134
+modified: 1611566755987
+created: 1611485946467
+url: "{{ base_url }}/hello_world"
+name: Returns a string
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1611485946467
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

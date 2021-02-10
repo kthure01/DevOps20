@@ -1,0 +1,14 @@
+_id: ut_258cceb6cb734d8fb837bce7ae3d3a58
+type: UnitTest
+parentId: uts_0236caa128c74c4697eedabc33970847
+modified: 1611565206363
+created: 1611489683912
+requestId: req_wrk_572d180380b542e9b4dfda6cbb9c9134a9308100
+name: Multiplication - Verify correct result
+code: |-
+  const response1 = await insomnia.send();
+  const body = JSON.parse(response1.data);
+
+  expect(response1.status).to.equal(200);
+  expect(body.Message).to.equal(50);
+  expect(body.Status_Code).to.equal(200);

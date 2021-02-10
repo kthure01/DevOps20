@@ -1,0 +1,31 @@
+_id: req_f840bb3201a3492283802d4f851f0017
+type: Request
+parentId: fld_b8296422b4b34f8f91e746e2b051f847
+modified: 1612362257465
+created: 1612362251204
+url: localhost/add
+name: Bengt
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "bengt",
+    	"password": "bengt_password",
+    	"amount": 200
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_41ec26d62e1e4b0abbc0b663ffed3f6e
+authentication: {}
+metaSortKey: -1612362192923.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

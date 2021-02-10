@@ -1,0 +1,30 @@
+_id: req_c559cbd98bb04b8dac6c52c72fb28961
+type: Request
+parentId: wrk_572d180380b542e9b4dfda6cbb9c9134
+modified: 1611489300142
+created: 1611489175669
+url: "{{ base_url }}/division"
+name: Returns the division of 2 numbers - Division by 0
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    {
+    	"x": 10,
+    	"y": 0
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_a314d4564a9c40538f315b1300cbfe61
+authentication: {}
+metaSortKey: -1611485959115.1875
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

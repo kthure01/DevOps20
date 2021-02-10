@@ -1,0 +1,30 @@
+_id: req_wrk_bcd70a0415ee4afd9f3b4c235c38c938aa00568c
+type: Request
+parentId: wrk_bcd70a0415ee4afd9f3b4c235c38c938
+modified: 1612361843275
+created: 1612359469419
+url: "{{ base_url }}/add"
+name: Add amount to account
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "username": "user1",
+      "password": "password",
+      "amount": 100
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1612359469419
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

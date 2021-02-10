@@ -1,0 +1,14 @@
+_id: ut_fa0bb64d3d244ada9f8d2ebd98ec7e0d
+type: UnitTest
+parentId: uts_0236caa128c74c4697eedabc33970847
+modified: 1611565289582
+created: 1611489734244
+requestId: req_wrk_572d180380b542e9b4dfda6cbb9c91346fe2f7e5
+name: Division  - Verify correct result
+code: |-
+  const response1 = await insomnia.send();
+  const body = JSON.parse(response1.data);
+
+  expect(response1.status).to.equal(200);
+  expect(body.Message).to.equal(2.0);
+  expect(body.Status_Code).to.equal(200);

@@ -1,0 +1,29 @@
+_id: req_b398679e5b174052ac8f893e2fdd630f
+type: Request
+parentId: wrk_572d180380b542e9b4dfda6cbb9c9134
+modified: 1611565102993
+created: 1611488444685
+url: "{{ base_url }}/add"
+name: Returns the sum of 2 numbers - Missing parameter
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    {
+    	"x": 10
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f5bd7d22fd6d4ee89b6b2f56ad2f606a
+authentication: {}
+metaSortKey: -1611493111443.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

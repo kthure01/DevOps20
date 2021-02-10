@@ -1,0 +1,29 @@
+_id: req_wrk_bcd70a0415ee4afd9f3b4c235c38c93838e8e88f
+type: Request
+parentId: wrk_bcd70a0415ee4afd9f3b4c235c38c938
+modified: 1612361843265
+created: 1612359964147
+url: "{{ base_url }}/delete"
+name: Delete user
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "username": "user1",
+      "password": "password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1612359964147
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

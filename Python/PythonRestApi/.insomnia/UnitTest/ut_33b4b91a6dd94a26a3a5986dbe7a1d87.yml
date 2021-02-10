@@ -1,0 +1,14 @@
+_id: ut_33b4b91a6dd94a26a3a5986dbe7a1d87
+type: UnitTest
+parentId: uts_0236caa128c74c4697eedabc33970847
+modified: 1611489626569
+created: 1611488615531
+requestId: req_b398679e5b174052ac8f893e2fdd630f
+name: Addition - Returns 301
+code: |-
+  const response1 = await insomnia.send();
+  const body = JSON.parse(response1.data);
+
+  expect(response1.status).to.equal(200);
+  expect(body.Message).to.equal("An error happened");
+  expect(body.Status_Code).to.equal(301);

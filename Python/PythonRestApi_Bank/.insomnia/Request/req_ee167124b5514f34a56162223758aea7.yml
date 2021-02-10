@@ -1,0 +1,30 @@
+_id: req_ee167124b5514f34a56162223758aea7
+type: Request
+parentId: fld_4fa215d630424cab83b2da802039a99e
+modified: 1612362102598
+created: 1612362095007
+url: localhost/register
+name: Bengt
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "bengt",
+    	"password": "bengt_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_59f117b31f5d4cd8b7851033064b2a88
+authentication: {}
+metaSortKey: -1612361938253.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

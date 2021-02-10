@@ -1,0 +1,14 @@
+_id: ut_27480425d9874140b8a8da671e7e604e
+type: UnitTest
+parentId: uts_0236caa128c74c4697eedabc33970847
+modified: 1611489893910
+created: 1611489761163
+requestId: req_c559cbd98bb04b8dac6c52c72fb28961
+name: Division - Returns 302
+code: |-
+  const response1 = await insomnia.send();
+  const body = JSON.parse(response1.data);
+
+  expect(response1.status).to.equal(200);
+  expect(body.Message).to.equal("An error happened");
+  expect(body.Status_Code).to.equal(302);

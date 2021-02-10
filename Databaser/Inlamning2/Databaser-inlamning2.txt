@@ -1,0 +1,85 @@
+inlämningsuppgift 2
+Databaser och Linux
+Deadline v7 19/2 23:59
+Punkter som evalueras:
+
+6. Tillämpa sökningar i olika databassystem (MySQL / Mariadb och MongoDB)
+7. Använder sig av CRUD i sin miljö:
+8. Skapa, utveckla och underhålla egna samt andras databaser
+
+Introduktion
+I den här inlämningsuppgiften kommer vi bland annat använda oss utav databaser och tabeller som vi skapade i inlämning 1, vi kommer även skapa nytt.
+Har du inte kvar dina databaser och tabeller från tidigare uppgiften så får du skapa upp dessa igen.
+
+Med den här inlämningsuppgiften skall ni även skriva en rapport, där ni förklarar hur ni tänkt.
+Ju mer utförlig rapporten är, desto större chans har du att nå betyget du önskar.
+Alla moment i denna inlämning skall rapporteras i rapporten.
+Du väljer själv i vilket format du skriver rapporten.
+
+I slutet av detta dokument finns även frågor som du skall besvara.
+
+Del 1
+i inlämningsuppgiften 1, så skapade vi upp en tabell i MySQL och en collection i MongoDB.
+Vi kallade denna tabell för “locations”.
+Denna tabell skulle innehålla dessa fält:
+
+1. ID (skapas per automatik i Mongo)
+2. country (string)
+3. address (string)
+
+Nu är det dags att skapa upp data i denna tabell och collection.
+Följande data ska in i både MongoDB och MySQL:
+
+country	address
+SE	Vimmerbygatan 20
+US	Asteroid road 5
+US	Comet road 41
+SE	Brunnsgatan 7
+
+Del 2
+Nu ska vi skapa upp en till tabell i MySQL / MariaDB.
+Här får du inte lika många instruktioner då du skall tänka själv.
+Vi vill skapa upp en tabell som vi kommer använda som relations-tabell.
+Denna tabell ska beskriva relationer mellan bank-konton och “locations”.
+Du bestämmer själv vad tabellen skall heta, samt hur du designar denna tabell.
+Här kan du glömma bort MongoDB för ett ögonblick om du vill, detta moment behöver endast tillämpas i MySQL / MariaDB (det kommer istället frågor om detta i MongoDB senare).
+
+Saker att tänka på:
+1.	Du skall använda dig utav foreign keys (https://www.w3schools.com/sql/sql_foreignkey.asp)
+2.	Tabellen skall inte innehålla någon information utöver locations ID och bank-konto ID.
+
+Efter du skapat upp tabellen så ska vi även stoppa in lite data i den.
+Du ska stoppa in rader / dokument som beskriver följande:
+
+
+1.	Bank-konto 'Corbin', 'Hauck' skall vara kopplad till en location med adressen Brunnsgatan 7.
+2.	Bank-konto 'Vanya', 'Worsell' skall vara kopplad till en location med adressen Asteroid road 5
+3.	Bank-konto 'Eldon', 'McCartan' skall vara kopplad till en location med adressen Vimmerbygatan 20
+4.	Bank-konto 'Ingunna', 'Castellucci' skall vara kopplad till en location med adressen Comet road 41
+
+Förklara i din rapport hur du gjorde.
+Skicka även med din kod du gjorde för att tillämpa detta.
+
+Del 3
+Nu skall vi utföra sökningar på vår data.
+Skriv en fråga i MySQL som hämtar alla bank-konton som är kopplade till “locations” där country är “SE”.
+Skriv i din rapport hur du gjorde.
+Det finns flera lösningar här, och ingen lösning som gör jobbet är fel.
+( återigen, du väljer själv om du även vill göra detta i MongoDB )
+
+
+Del 4
+Nu skall du visa förståelse på CRUD.
+Skriv i din rapport, exempel på MongoDB och SQL frågor som är av karaktärerna:
+
+1.	Create
+2.	Read
+3.	Update
+4.	Delete
+Frågor
+1.	Vad är motsvarigheten i MongoDB till en foreign key?
+2.	Vad är motsvarigheten till en SELECT i MongoDB?
+3.	Hur hade du löst del 2 och 3 i MongoDB? (du behöver inte göra en komplett lösning, men beskriv på ett ungefär hur du hade gjort)
+4.	Vad behöver du för information för att kunna logga in i någon annans databas?
+5.	Varför skulle man vilja använda sig utav en databas?
+6.	Nämn några andra ställen / situationer utöver databaser som CRUD används

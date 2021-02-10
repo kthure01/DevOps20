@@ -1,0 +1,29 @@
+_id: req_e841054b98e14e7586d458364481a77f
+type: Request
+parentId: wrk_572d180380b542e9b4dfda6cbb9c9134
+modified: 1611489282389
+created: 1611489162688
+url: "{{ base_url }}/division"
+name: Returns the division of 2 numbers - Missing parameter
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    {
+    	"y": 5
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d0669ca08cbe4d8c8e52532293e9f360
+authentication: {}
+metaSortKey: -1611485971763.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

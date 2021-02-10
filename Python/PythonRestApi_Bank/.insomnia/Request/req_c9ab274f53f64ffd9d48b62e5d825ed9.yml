@@ -1,0 +1,31 @@
+_id: req_c9ab274f53f64ffd9d48b62e5d825ed9
+type: Request
+parentId: fld_b8296422b4b34f8f91e746e2b051f847
+modified: 1612362233851
+created: 1612362223580
+url: localhost/add
+name: Adam
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "adam",
+    	"password": "adam_password",
+    	"amount": 100
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_41ec26d62e1e4b0abbc0b663ffed3f6e
+authentication: {}
+metaSortKey: -1612362223580
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

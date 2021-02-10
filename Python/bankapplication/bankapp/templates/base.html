@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    {% endblock %}
+
+    <link
+      rel='stylesheet'
+      type='text/css'
+      href='{{ url_for('static', filename='css/bulma.min.css') }}'/>
+
+    <link
+      rel='stylesheet'
+      type='text/css'
+      href='{{ url_for('static', filename='css/style.css') }}'/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,300;1,900&display=swap" rel="stylesheet">
+
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+  </head>
+  <body>
+    {% include 'components/nav.html' %}
+    <div class='site-content'>
+      {% block body %}
+      {% endblock %}
+    </div>
+  </body>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <strong>BANK</strong> by <a href="https://github.com/sebbekarlsson">Sebastian Karlsson</a> 
+    </div>
+  </footer>
+</html>

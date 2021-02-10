@@ -1,0 +1,30 @@
+_id: req_15562fb9d7664b53bbc4ff1bc061a84c
+type: Request
+parentId: fld_28b2c72f5acd4798aac91e706ae26ff6
+modified: 1612362434426
+created: 1612362421819
+url: localhost/delete
+name: Cesar
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "cesar",
+    	"password": "cesar_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_3e61633887074f2cbbdfd2df088b2ba8
+authentication: {}
+metaSortKey: -1612362421819
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

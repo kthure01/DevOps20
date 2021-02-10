@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"orderId":{"$numberDouble":"1.0"}},"name":"orderId_1"},{"v":{"$numberInt":"2"},"key":{"prodId":{"$numberDouble":"1.0"}},"name":"prodId_1"}],"uuid":"50c82ad4865c45c3970b09d96b9aff93","collectionName":"lineitems"}

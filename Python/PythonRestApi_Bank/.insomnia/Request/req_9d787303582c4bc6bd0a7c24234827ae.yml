@@ -1,0 +1,31 @@
+_id: req_9d787303582c4bc6bd0a7c24234827ae
+type: Request
+parentId: fld_3307569e91354a80b1f60655ef7d87ba
+modified: 1612362386018
+created: 1612362373994
+url: localhost/payloan
+name: Adam
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "adam",
+    	"password": "adam_password",
+    	"amount": 50
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_3e4737b384424715a941f092b1b2e567
+authentication: {}
+metaSortKey: -1612362373994
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

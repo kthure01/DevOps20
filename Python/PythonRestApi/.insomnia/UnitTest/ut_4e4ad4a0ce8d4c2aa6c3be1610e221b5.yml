@@ -1,0 +1,14 @@
+_id: ut_4e4ad4a0ce8d4c2aa6c3be1610e221b5
+type: UnitTest
+parentId: uts_0236caa128c74c4697eedabc33970847
+modified: 1611565120261
+created: 1611489325569
+requestId: req_wrk_572d180380b542e9b4dfda6cbb9c91342e31653f
+name: Subtraction - Verify correct result
+code: |-
+  const response1 = await insomnia.send();
+  const body = JSON.parse(response1.data);
+
+  expect(response1.status).to.equal(200);
+  expect(body.Message).to.equal(5);
+  expect(body.Status_Code).to.equal(200);

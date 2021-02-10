@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% from '_formhelpers.html' import render_field %}
+{% from '_bank_account.html' import render_accounts %}
+
+
+{% block body %}
+  <div class='hero is-fullheight is-centered is-vcentered columns'>
+  {% if not account %}
+    <h1 class="title is-3">New Bank Account</h1>
+  {% endif %}
+  <div class='card'>
+    <div class='card-content'>
+      {% if account %}
+        {{ render_accounts([account]) }}
+      {% else %}
+        <form method="POST">
+          {{ render_field(form.name) }}
+          <div class="field is-grouped">
+            <div class="control">
+              <input type='submit' class="button is-link" value='Create'>
+            </div>
+          </div>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+{% endblock %}

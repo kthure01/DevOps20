@@ -1,0 +1,29 @@
+_id: req_f635496d0eeb4f949b43520b164dd5c7
+type: Request
+parentId: wrk_572d180380b542e9b4dfda6cbb9c9134
+modified: 1611489245529
+created: 1611489138606
+url: "{{ base_url }}/subtract"
+name: Returns the subtraction of 2 numbers - Missing parameter
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    {
+    	"x": 10
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_25c4d19203df45aa958e26e9888bef1a
+authentication: {}
+metaSortKey: -1611486098245.25
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

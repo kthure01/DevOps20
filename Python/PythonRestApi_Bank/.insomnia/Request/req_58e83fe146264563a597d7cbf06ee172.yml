@@ -1,0 +1,32 @@
+_id: req_58e83fe146264563a597d7cbf06ee172
+type: Request
+parentId: fld_32c48781b6fa4c44bc1ef327b330e65e
+modified: 1612362294186
+created: 1612362286750
+url: localhost/transfer
+name: Adam -> Bengt
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "adam",
+    	"password": "adam_password",
+    	"to": "bengt",
+    	"amount": 10
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_75c7d803f86f4579985db635a6d0e8b6
+authentication: {}
+metaSortKey: -1612362286750
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

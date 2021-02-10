@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"a9b6e6c411b84866ab0ad98fb9806f96","collectionName":"crunchbase_database"}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from '_bank_account.html' import render_accounts %}
+
+
+{% block body %}
+  <section class="hero is-info is-bold">
+    <div class="hero-body">
+      <div class="content">
+        <h1 class="title">
+          {{ person.firstname }} {{ person.lastname }}
+        </h1>
+        <h2 class="subtitle is-5">
+          Accounts: {{ person.accounts | length }}
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class='section content is-mobile'>
+    {{ render_accounts(person.accounts) }}
+  </section>
+{% endblock %}

@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"19eb43e398a94b7ca61a1768de2c373d","collectionName":"Sakila_customers"}

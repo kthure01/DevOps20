@@ -1,0 +1,21 @@
+_id: req_wrk_572d180380b542e9b4dfda6cbb9c9134213934c0
+type: Request
+parentId: wrk_572d180380b542e9b4dfda6cbb9c9134
+modified: 1611566755985
+created: 1611566755985
+url: "{{ base_url }}/hello"
+name: Count visitors
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1611566755985
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

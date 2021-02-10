@@ -1,0 +1,29 @@
+_id: req_wrk_572d180380b542e9b4dfda6cbb9c91342e31653f
+type: Request
+parentId: wrk_572d180380b542e9b4dfda6cbb9c9134
+modified: 1611566755978
+created: 1611565073288
+url: "{{ base_url }}/subtract"
+name: Returns the subtraction of 2 numbers
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "x": 10,
+      "y": 5
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1611490858032
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

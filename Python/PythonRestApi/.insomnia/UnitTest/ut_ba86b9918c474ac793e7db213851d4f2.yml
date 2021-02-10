@@ -1,0 +1,14 @@
+_id: ut_ba86b9918c474ac793e7db213851d4f2
+type: UnitTest
+parentId: uts_0236caa128c74c4697eedabc33970847
+modified: 1611564737145
+created: 1611487123398
+requestId: req_wrk_572d180380b542e9b4dfda6cbb9c9134cc7b4381
+name: Addition - Verify correct result
+code: |-
+  const response1 = await insomnia.send();
+  const body = JSON.parse(response1.data);
+
+  expect(response1.status).to.equal(200);
+  //expect(body.Message).to.equal(15);
+  //expect(body.Status_Code).to.equal(200);

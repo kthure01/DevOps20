@@ -1,0 +1,30 @@
+_id: req_9269a520ea0c4ce998aa948dab0f9173
+type: Request
+parentId: fld_4fa215d630424cab83b2da802039a99e
+modified: 1612362087289
+created: 1612362072008
+url: localhost/register
+name: Adam
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "adam",
+    	"password": "adam_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_59f117b31f5d4cd8b7851033064b2a88
+authentication: {}
+metaSortKey: -1612361975811
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,289 @@
+_id: spc_44fb9e3004354d1abf047cfd27f344fd
+type: ApiSpec
+parentId: wrk_bcd70a0415ee4afd9f3b4c235c38c938
+modified: 1612361843296
+created: 1612358062897
+fileName: PythonRestApi_Bank
+contents: |-
+  # Specify that your document is the OpenAPI 3 format
+  openapi: 3.0.0
+
+  # Define high-level metadata for the API
+  info:
+    version: 1.0.0
+    title: Python REST API - Bank
+    description: Python with a RESTful API
+   
+  # Specify the base URL the API can be accessed from
+  servers:
+    - url: localhost
+
+  # Define operations for the API. This will be where most
+  # of the work is done. The first route you'll be defining
+  # is `GET /recentchanges.json`
+  paths:
+  #  /recentchanges.json:
+  #    get:
+  #      summary: Recent Changes
+    /:
+      get:
+        summary: index
+    /register:
+      post:
+        tags:
+          - register
+        summary: Register new user
+        description: This can be done by anyone.
+        operationId: registerUser
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterUser"
+          description: Created user object
+          required: true
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/xml:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+          "301":
+            description: An error happened
+            
+    /balance:
+      post:
+        tags:
+          - balance
+        summary: Balance for user
+        description: This can be by correct user only.
+        operationId: balanceOfUser
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterUser"
+          description: Created user object
+          required: true
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/xml:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+          "301":
+            description: An error happened
+
+    /add:
+      post:
+        tags:
+          - add
+        summary: Add amount to account
+        description: This can be by correct user only.
+        operationId: addAmountToUser
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserAndAmount"
+          description: Created user object
+          required: true
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/xml:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+          "301":
+            description: An error happened
+
+    /transfer:
+      post:
+        tags:
+          - transfer
+        summary: Transfer amount to account
+        description: This can be by correct user only.
+        operationId: transfereAmountToUser
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransferAmount"
+          description: Created user object
+          required: true
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/xml:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+          "301":
+            description: An error happened
+
+    /takeloan:
+      post:
+        tags:
+          - takeloan
+        summary: Take loan with amount
+        description: This can be by correct user only.
+        operationId: takeLoanAmount
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserAndAmount"
+          description: Created user object
+          required: true
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/xml:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+          "301":
+            description: An error happened
+
+    /payloan:
+      post:
+        tags:
+          - payloan
+        summary: Pay loan with amount
+        description: This can be by correct user only.
+        operationId: payLoanAmount
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserAndAmount"
+          description: Created user object
+          required: true
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/xml:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+          "301":
+            description: An error happened
+
+    /delete:
+      post:
+        tags:
+          - delete
+        summary: Delete user
+        description: This can be by correct user only.
+        operationId: deleteUser
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterUser"
+          description: Created user object
+          required: true
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/xml:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Responce"
+          "301":
+            description: An error happened
+
+  components:
+    requestBodies:
+      UserArray:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/RegisterUser"
+        description: List of user object
+        required: true
+    schemas:
+      RegisterUser:
+          type: object
+          properties:
+            username:
+              type: string
+              example: user1
+            password:
+              type: string
+              example: password
+          xml:
+            name: RegisterUser
+      
+      UserAndAmount:
+          type: object
+          properties:
+            username:
+              type: string
+              example: user1
+            password:
+              type: string
+              example: password
+            amount:
+              type: integer
+              format: int64
+              example: 100
+          xml:
+            name: UserAndAmount
+      
+      TransferAmount:
+          type: object
+          properties:
+            username:
+              type: string
+              example: user1
+            password:
+              type: string
+              example: password
+            to:
+              type: string
+              example: user2
+            amount:
+              type: integer
+              format: int64
+              example: 100
+          xml:
+            name: UserAndAmount
+      
+      Responce:
+          type: object
+          properties:
+            Message:
+              type: string
+            Satus_Code:
+              type: integer
+              format: int64
+          xml:
+            name: Parameters
+contentType: yaml

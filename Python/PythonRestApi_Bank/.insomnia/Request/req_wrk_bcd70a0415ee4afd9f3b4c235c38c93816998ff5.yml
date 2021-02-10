@@ -1,0 +1,31 @@
+_id: req_wrk_bcd70a0415ee4afd9f3b4c235c38c93816998ff5
+type: Request
+parentId: wrk_bcd70a0415ee4afd9f3b4c235c38c938
+modified: 1612361843273
+created: 1612359664673
+url: "{{ base_url }}/transfer"
+name: Transfer amount to account
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "username": "user1",
+      "password": "password",
+      "to": "user2",
+      "amount": 100
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1612359664673
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

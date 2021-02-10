@@ -1,0 +1,31 @@
+_id: req_d143b0b9b3b4413993bdb711d3078abc
+type: Request
+parentId: fld_fe907185195e413cbd54d0d3682d63ef
+modified: 1612362531750
+created: 1612362343812
+url: localhost/takeloan
+name: Adam
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "adam",
+    	"password": "adam_password",
+    	"amount": 50
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_9f951ca6866a49ea9b10b71d7a1a572d
+authentication: {}
+metaSortKey: -1612362343812
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

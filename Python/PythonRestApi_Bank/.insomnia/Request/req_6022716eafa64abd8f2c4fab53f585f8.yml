@@ -1,0 +1,30 @@
+_id: req_6022716eafa64abd8f2c4fab53f585f8
+type: Request
+parentId: fld_1e21d66a9bb446e18919d7efb6059d7c
+modified: 1612362194628
+created: 1612362181995
+url: localhost/balance
+name: Adam
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "adam",
+    	"password": "adam_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_e6b45470cbca4d718b64d6de9831d16b
+authentication: {}
+metaSortKey: -1612362106596.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

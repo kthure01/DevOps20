@@ -1,0 +1,30 @@
+_id: req_ca35822c4140467dbe072d45ae828c96
+type: Request
+parentId: fld_1e21d66a9bb446e18919d7efb6059d7c
+modified: 1612362201775
+created: 1612362187117
+url: localhost/balance
+name: Bengt
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "bengt",
+    	"password": "bengt_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_e6b45470cbca4d718b64d6de9831d16b
+authentication: {}
+metaSortKey: -1612362078761.25
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

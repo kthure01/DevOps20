@@ -1,0 +1,30 @@
+_id: req_8604378d52a74711b887a002f2d0294a
+type: Request
+parentId: fld_4fa215d630424cab83b2da802039a99e
+modified: 1612362060950
+created: 1612362050926
+url: localhost/register
+name: BANK
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "BANK",
+    	"password": "secure_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_59f117b31f5d4cd8b7851033064b2a88
+authentication: {}
+metaSortKey: -1612362050926
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,30 @@
+_id: req_c1158062bc9b4674b3140494a9291cbc
+type: Request
+parentId: fld_1e21d66a9bb446e18919d7efb6059d7c
+modified: 1612362176562
+created: 1612362162267
+url: localhost/balance
+name: BANK
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "BANK",
+    	"password": "secure_password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_e6b45470cbca4d718b64d6de9831d16b
+authentication: {}
+metaSortKey: -1612362162267
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
