@@ -1,1 +1,0 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"orders.orderId":{"$numberDouble":"1.0"}},"name":"x1","background":false,"sparse":false}],"uuid":"3466ca6b103e449cb21c3bf480566c34","collectionName":"embeddedOrders"}

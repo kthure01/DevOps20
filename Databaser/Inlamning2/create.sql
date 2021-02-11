@@ -1,11 +1,22 @@
-USE mysql;
+DROP SCHEMA IF EXISTS kt_inlamning2;
 
-DROP SCHEMA IF EXISTS db_inlamning2;
+CREATE DATABASE kt_inlamning2;
 
-CREATE DATABASE db_inlamning2;
+USE kt_inlamning2;
 
-USE db_inlamning2;
-
+/*
+MariaDB [kt_inlamning2]> DESCRIBE bank_accounts;;
++------------+-------------+------+-----+---------------------+-------------------------------+
+| Field      | Type        | Null | Key | Default             | Extra                         |
++------------+-------------+------+-----+---------------------+-------------------------------+
+| id         | int(11)     | NO   | PRI | NULL                | auto_increment                |
+| first_name | varchar(50) | YES  |     | NULL                |                               |
+| last_name  | varchar(50) | YES  |     | NULL                |                               |
+| holding    | int(11)     | YES  |     | NULL                |                               |
+| created    | timestamp   | YES  |     | current_timestamp() |                               |
+| modified   | timestamp   | YES  |     | current_timestamp() | on update current_timestamp() |
++------------+-------------+------+-----+---------------------+-------------------------------+
+*/
 CREATE TABLE bank_accounts (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name varchar(50) DEFAULT NULL,
@@ -15,6 +26,18 @@ CREATE TABLE bank_accounts (
   modified timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
+/*
+MariaDB [kt_inlamning2]> DESCRIBE locations;
++----------+-------------+------+-----+---------------------+-------------------------------+
+| Field    | Type        | Null | Key | Default             | Extra                         |
++----------+-------------+------+-----+---------------------+-------------------------------+
+| id       | int(11)     | NO   | PRI | NULL                | auto_increment                |
+| country  | varchar(50) | YES  |     | NULL                |                               |
+| address  | varchar(50) | YES  |     | NULL                |                               |
+| created  | timestamp   | YES  |     | current_timestamp() |                               |
+| modified | timestamp   | YES  |     | current_timestamp() | on update current_timestamp() |
++----------+-------------+------+-----+---------------------+-------------------------------+
+*/
 CREATE TABLE locations (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   country varchar(50) DEFAULT NULL,
@@ -23,15 +46,23 @@ CREATE TABLE locations (
   modified timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
+/*
+MariaDB [kt_inlamning2]> DESCRIBE acc_loc_relation;
++-------------+---------+------+-----+---------+-------+
+| Field       | Type    | Null | Key | Default | Extra |
++-------------+---------+------+-----+---------+-------+
+| account_id  | int(11) | NO   | PRI | NULL    |       |
+| location_id | int(11) | YES  | MUL | NULL    |       |
++-------------+---------+------+-----+---------+-------+
+*/
 CREATE TABLE acc_loc_relation (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    account_id int,
+    account_id int PRIMARY KEY,
     location_id int,
-    FOREIGN KEY (account_id) REFERENCES bank_accounts(id),
+    FOREIGN KEY (account_id) REFERENCES bank_accounts(id) ON DELETE CASCADE,
     FOREIGN KEY (location_id) REFERENCES locations(id)
   );
 
-LOAD DATA LOCAL INFILE './dump2.txt' INTO TABLE bank_accounts COLUMNS TERMINATED BY ',' OPTIONALLY ENCLOSED BY "'";
+LOAD DATA LOCAL INFILE './dump.sql.txt' INTO TABLE bank_accounts COLUMNS TERMINATED BY ',' OPTIONALLY ENCLOSED BY "'";
 
 INSERT INTO
   locations (country, address)
@@ -77,7 +108,7 @@ VALUES
       FROM
         locations
       WHERE
-        address LIKE 'Asteroid%'
+        address LIKE 'Asteroid road%'
     )
   );
 
@@ -117,16 +148,15 @@ VALUES
       FROM
         locations
       WHERE
-        address LIKE 'Comet%'
+        address LIKE 'Comet road%'
     )
   );
 
 SELECT
-  *
+  b.id, b.first_name, b.last_name, b.holding, l.country, l.address
 FROM
   bank_accounts b
   JOIN acc_loc_relation a ON b.id = a.account_id
   JOIN locations l ON l.id = a.location_id
 WHERE
   l.country LIKE "SE";
-

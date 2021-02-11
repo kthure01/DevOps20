@@ -66,6 +66,17 @@ Skriv en fråga i MySQL som hämtar alla bank-konton som är kopplade till “lo
 Skriv i din rapport hur du gjorde.
 Det finns flera lösningar här, och ingen lösning som gör jobbet är fel.
 ( återigen, du väljer själv om du även vill göra detta i MongoDB )
+# MariaDB
+SELECT b.id, b.first_name, b.last_name, b.holding, l.country, l.address
+FROM bank_accounts b
+  JOIN acc_loc_relation a ON b.id = a.account_id
+  JOIN locations l ON l.id = a.location_id
+WHERE
+  l.country LIKE "SE";
+
+#MongoDB
+db.bank_accounts.find({"location.country": "SE"})
+
 
 
 Del 4
@@ -73,13 +84,37 @@ Nu skall du visa förståelse på CRUD.
 Skriv i din rapport, exempel på MongoDB och SQL frågor som är av karaktärerna:
 
 1.	Create
+    MariaDB: CREATE TABLE hej (text VARCHAR(100));
+    MongoDB: db.<collection>.insert({text: "Hejsan"})
+
 2.	Read
+    MariaDB: SELECT * FROM hej;
+    MongoDB: db.<collection>.find()
+
 3.	Update
+    MariaDB: UPDATE hej SET text = "Hej igen!" WHERE text LIKE "Hejsan";
+    MongoDB: db.<collection>.update({text: "Hejsan"}, {$set: {text: "Hej igen!"}})
+
 4.	Delete
+    MariaDB: DROP TABLE hej;
+    MongoDB: db.<collection>.remove()
+
+
 Frågor
 1.	Vad är motsvarigheten i MongoDB till en foreign key?
+    DBRef
+
 2.	Vad är motsvarigheten till en SELECT i MongoDB?
+    db.<collection>.find() eller med filter db.<collection>.find({first_name: "Eldon"})
+
 3.	Hur hade du löst del 2 och 3 i MongoDB? (du behöver inte göra en komplett lösning, men beskriv på ett ungefär hur du hade gjort)
+
 4.	Vad behöver du för information för att kunna logga in i någon annans databas?
+    vilken databas det är (t.ex MariaDB, MongoDB, PostgreSQL, SQL Server), ip-adress, portnummer, användarnamn och lösen
+
 5.	Varför skulle man vilja använda sig utav en databas?
+    För att spara data på ett strukturerat sätt och för att kunna hämta den information man vill ha.
+    Med olika typer av frågeställnigar kan man generera olika typer av rapporter och statistik.
+
 6.	Nämn några andra ställen / situationer utöver databaser som CRUD används
+
