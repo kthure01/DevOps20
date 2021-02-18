@@ -1,23 +1,3 @@
-inlämningsuppgift 2
-Databaser och Linux
-Deadline v7 19/2 23:59
-Punkter som evalueras:
-
-6. Tillämpa sökningar i olika databassystem (MySQL / Mariadb och MongoDB)
-7. Använder sig av CRUD i sin miljö:
-8. Skapa, utveckla och underhålla egna samt andras databaser
-
-Introduktion
-I den här inlämningsuppgiften kommer vi bland annat använda oss utav databaser och tabeller som vi skapade i inlämning 1, vi kommer även skapa nytt.
-Har du inte kvar dina databaser och tabeller från tidigare uppgiften så får du skapa upp dessa igen.
-
-Med den här inlämningsuppgiften skall ni även skriva en rapport, där ni förklarar hur ni tänkt.
-Ju mer utförlig rapporten är, desto större chans har du att nå betyget du önskar.
-Alla moment i denna inlämning skall rapporteras i rapporten.
-Du väljer själv i vilket format du skriver rapporten.
-
-I slutet av detta dokument finns även frågor som du skall besvara.
-
 Del 1
 i inlämningsuppgiften 1, så skapade vi upp en tabell i MySQL och en collection i MongoDB.
 Vi kallade denna tabell för “locations”.
@@ -59,6 +39,7 @@ Du ska stoppa in rader / dokument som beskriver följande:
 
 Förklara i din rapport hur du gjorde.
 Skicka även med din kod du gjorde för att tillämpa detta.
+** Se acc_loc_relation i create.sql
 
 Del 3
 Nu skall vi utföra sökningar på vår data.
@@ -66,17 +47,6 @@ Skriv en fråga i MySQL som hämtar alla bank-konton som är kopplade till “lo
 Skriv i din rapport hur du gjorde.
 Det finns flera lösningar här, och ingen lösning som gör jobbet är fel.
 ( återigen, du väljer själv om du även vill göra detta i MongoDB )
-# MariaDB
-SELECT b.id, b.first_name, b.last_name, b.holding, l.country, l.address
-FROM bank_accounts b
-  JOIN acc_loc_relation a ON b.id = a.account_id
-  JOIN locations l ON l.id = a.location_id
-WHERE
-  l.country LIKE "SE";
-
-#MongoDB
-db.bank_accounts.find({"location.country": "SE"})
-
 
 
 Del 4
@@ -84,37 +54,15 @@ Nu skall du visa förståelse på CRUD.
 Skriv i din rapport, exempel på MongoDB och SQL frågor som är av karaktärerna:
 
 1.	Create
-    MariaDB: CREATE TABLE hej (text VARCHAR(100));
-    MongoDB: db.<collection>.insert({text: "Hejsan"})
-
 2.	Read
-    MariaDB: SELECT * FROM hej;
-    MongoDB: db.<collection>.find()
-
 3.	Update
-    MariaDB: UPDATE hej SET text = "Hej igen!" WHERE text LIKE "Hejsan";
-    MongoDB: db.<collection>.update({text: "Hejsan"}, {$set: {text: "Hej igen!"}})
-
 4.	Delete
-    MariaDB: DROP TABLE hej;
-    MongoDB: db.<collection>.remove()
 
 
 Frågor
 1.	Vad är motsvarigheten i MongoDB till en foreign key?
-    DBRef
-
 2.	Vad är motsvarigheten till en SELECT i MongoDB?
-    db.<collection>.find() eller med filter db.<collection>.find({first_name: "Eldon"})
-
 3.	Hur hade du löst del 2 och 3 i MongoDB? (du behöver inte göra en komplett lösning, men beskriv på ett ungefär hur du hade gjort)
-
 4.	Vad behöver du för information för att kunna logga in i någon annans databas?
-    vilken databas det är (t.ex MariaDB, MongoDB, PostgreSQL, SQL Server), ip-adress, portnummer, användarnamn och lösen
-
 5.	Varför skulle man vilja använda sig utav en databas?
-    För att spara data på ett strukturerat sätt och för att kunna hämta den information man vill ha.
-    Med olika typer av frågeställnigar kan man generera olika typer av rapporter och statistik.
-
 6.	Nämn några andra ställen / situationer utöver databaser som CRUD används
-

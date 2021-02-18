@@ -1,52 +1,94 @@
 Del 1
-i inlämningsuppgiften 1, så skapade vi upp en tabell i MySQL och en collection i MongoDB.
-Vi kallade denna tabell för “locations”.
-Denna tabell skulle innehålla dessa fält:
+I filen create_db.sql har jag lagt skapandet av hela databasen för MariaDB.
+I filen create_db.js har jag lagt skapandet av hela databasen för MongoDB.
 
-1. ID (skapas per automatik i Mongo)
-2. country (string)
-3. address (string)
+/*
+    Detta är den tabell jag skapade i inlämningsuppgift 2.
+*/
+CREATE TABLE locations (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  country varchar(50) DEFAULT NULL,
+  address varchar(50) DEFAULT NULL,
+  created timestamp NULL DEFAULT current_timestamp(),
+  modified timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
 
-Nu är det dags att skapa upp data i denna tabell och collection.
-Följande data ska in i både MongoDB och MySQL:
+/* 
+    Så här har jag gjort för att lägga till data i tabellen.
+*/
+INSERT INTO
+  locations (country, address)
+VALUES
+  ('SE', 'Vimmerbygatan 20'),
+  ('US', 'Asteroid road 5'),
+  ('US', 'Comet road 41'),
+  ('SE', 'Brunnsgatan 7');
 
-country	address
-SE	Vimmerbygatan 20
-US	Asteroid road 5
-US	Comet road 41
-SE	Brunnsgatan 7
+
 
 Del 2
-Nu ska vi skapa upp en till tabell i MySQL / MariaDB.
-Här får du inte lika många instruktioner då du skall tänka själv.
-Vi vill skapa upp en tabell som vi kommer använda som relations-tabell.
-Denna tabell ska beskriva relationer mellan bank-konton och “locations”.
-Du bestämmer själv vad tabellen skall heta, samt hur du designar denna tabell.
-Här kan du glömma bort MongoDB för ett ögonblick om du vill, detta moment behöver endast tillämpas i MySQL / MariaDB (det kommer istället frågor om detta i MongoDB senare).
+/*
+    Så här har jag skapat relationstabellen mellan bank_accounts och locations.
+    Jag brukar normalt använda mig av en id-kolumn som primary key men enl. uppgiften
+    så skulle vi inte detta utan då fick det bli account_id istället. Detta borde inte vara några problem
+    då ett konto bara kan ha en referens till en locations.
+    Account_id blir även en foreign key till id i bank_accounts och locations_id är en foreign key
+    till id i tabellen locations. 
+*/
+CREATE TABLE acc_loc_relations (
+    account_id int PRIMARY KEY,
+    location_id int,
+    FOREIGN KEY (account_id) REFERENCES bank_accounts(id) ON DELETE CASCADE,
+    FOREIGN KEY (location_id) REFERENCES locations(id)
+);
 
-Saker att tänka på:
-1.	Du skall använda dig utav foreign keys (https://www.w3schools.com/sql/sql_foreignkey.asp)
-2.	Tabellen skall inte innehålla någon information utöver locations ID och bank-konto ID.
+/*
+    Lägger in bifogad data till bank_accounts.
+*/
+INSERT INTO
+  bank_accounts (first_name, last_name, holding)
+VALUES
+  ('Corbin', 'Hauck', 345674);
+  
+/*
+    Lägger in relationerna mellan bank_accounts och locations i tabellen acc_loc_relations.
+    Använder mig av LAST_INSERT_ID() för att få id't på den senast skapade bank_accounts
+    och en SELECT-fråga för att få fram location id. Den andra läggs till på motsvarande sätt.
+*/
+INSERT INTO
+  acc_loc_relations (account_id, location_id)
+VALUES
+  (
+    LAST_INSERT_ID(),
+    (
+      SELECT
+        id
+      FROM
+        locations
+      WHERE
+        address LIKE 'Brunnsgatan%'
+    )
+  );
 
-Efter du skapat upp tabellen så ska vi även stoppa in lite data i den.
-Du ska stoppa in rader / dokument som beskriver följande:
 
-
-1.	Bank-konto 'Corbin', 'Hauck' skall vara kopplad till en location med adressen Brunnsgatan 7.
-2.	Bank-konto 'Vanya', 'Worsell' skall vara kopplad till en location med adressen Asteroid road 5
-3.	Bank-konto 'Eldon', 'McCartan' skall vara kopplad till en location med adressen Vimmerbygatan 20
-4.	Bank-konto 'Ingunna', 'Castellucci' skall vara kopplad till en location med adressen Comet road 41
-
-Förklara i din rapport hur du gjorde.
-Skicka även med din kod du gjorde för att tillämpa detta.
-** Se acc_loc_relation i create.sql
 
 Del 3
-Nu skall vi utföra sökningar på vår data.
-Skriv en fråga i MySQL som hämtar alla bank-konton som är kopplade till “locations” där country är “SE”.
-Skriv i din rapport hur du gjorde.
-Det finns flera lösningar här, och ingen lösning som gör jobbet är fel.
-( återigen, du väljer själv om du även vill göra detta i MongoDB )
+/*
+    Frågan vi skulle skapa har jag gjort på följande sätt.
+    Jag hämtar data från bank_accounts och "joinar in" data från tabellen acc_loc_relation
+    som jag sedan "joinar" med locations för att sedan bara visa träffar där country är "SE".
+    MariaDB
+*/
+SELECT b.id, b.first_name, b.last_name, b.holding, l.country, l.address
+FROM bank_accounts b
+  JOIN acc_loc_relation a ON b.id = a.account_id
+  JOIN locations l ON l.id = a.location_id
+WHERE
+  l.country LIKE "SE";
+
+#MongoDB
+db.bank_accounts.find({"location.country": "SE"})
+
 
 
 Del 4
@@ -54,15 +96,41 @@ Nu skall du visa förståelse på CRUD.
 Skriv i din rapport, exempel på MongoDB och SQL frågor som är av karaktärerna:
 
 1.	Create
+    MariaDB: CREATE TABLE hej (text VARCHAR(100));
+    MongoDB: db.<collection>.insert({text: "Hejsan"})
+
 2.	Read
+    MariaDB: SELECT * FROM hej;
+    MongoDB: db.<collection>.find()
+
 3.	Update
+    MariaDB: UPDATE hej SET text = "Hej igen!" WHERE text LIKE "Hejsan";
+    MongoDB: db.<collection>.update({text: "Hejsan"}, {$set: {text: "Hej igen!"}})
+
 4.	Delete
+    MariaDB: DROP TABLE hej;
+    MongoDB: db.<collection>.remove()
 
 
 Frågor
 1.	Vad är motsvarigheten i MongoDB till en foreign key?
+    DBRef
+
 2.	Vad är motsvarigheten till en SELECT i MongoDB?
+    db.<collection>.find() eller med filter db.<collection>.find({first_name: "Eldon"})
+
 3.	Hur hade du löst del 2 och 3 i MongoDB? (du behöver inte göra en komplett lösning, men beskriv på ett ungefär hur du hade gjort)
+    Min lösning finns i filen create_db.js
+
 4.	Vad behöver du för information för att kunna logga in i någon annans databas?
+    Vilken databas det är (t.ex MariaDB, MongoDB, PostgreSQL, SQL Server), ip-adress, portnummer, användarnamn och lösen.
+
 5.	Varför skulle man vilja använda sig utav en databas?
+    För att spara data på ett strukturerat sätt och för att enkel kunna filtrera ut den information man vill ha.
+    Med olika typer av frågeställnigar kan man generera olika typer av rapporter och statistik.
+
 6.	Nämn några andra ställen / situationer utöver databaser som CRUD används
+    I applikationer och system som har behov av datautbyte i realtid, t.ex inom flyget och transportsektorn.
+    Egentligen kan man väl säga att alla ställen där man uppfyller kravet på CREATE, READ, UPDATE och DELETE
+    använder sig av CRUD-modellen.
+
