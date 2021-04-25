@@ -1,0 +1,43 @@
+# PyCharm and Intelli-J plugin
+Ansible
+Atom Material Icons
+Database Navigator
+Dracula Theme
+EduTools
+Gradianto
+Gruvbox Theme
+Indent Rainbow
+Kite AI Code
+Python Community Edition (IJ)
+Rainbow Brackets
+SonarLint
+Sourcery
+String Manipulation
+Tabnine AI Autocomplete
+
+# Visual Studio Code
+Community Material Theme
+Django
+Docker
+Jinja
+Jypter
+Kite AutoComplete AI Code
+MagicPython
+Material Icon Theme
+Material Theme
+Material Theme Icons
+MySQL (cweijan)
+MySQL (Jun Han)
+Pylance
+Python
+Python Extension Pack
+Remote - COntainers
+SonarLint
+Sourcery
+Visual Studio IntelliCode
+SQLTools
+SQLTools MySQL/MariaDB
+TabNine Autocomplete AI
+
+
+
