@@ -16,28 +16,35 @@ String Manipulation
 Tabnine AI Autocomplete
 
 # Visual Studio Code
+Ansible Language
+Atom One dark heme
+Beautify
 Community Material Theme
 Django
 Docker
+Dracule Official
 Jinja
 Jypter
-Kite AutoComplete AI Code
 MagicPython
 Material Icon Theme
 Material Theme
 Material Theme Icons
-MySQL (cweijan)
 MySQL (Jun Han)
+MySQL (cweijan)
+Prettier - Code Formatter
 Pylance
 Python
 Python Extension Pack
-Remote - COntainers
-SonarLint
-Sourcery
-Visual Studio IntelliCode
+Remote - Containers
+SQL Beautify
 SQLTools
 SQLTools MySQL/MariaDB
+SonarLint
+Sourcery
 TabNine Autocomplete AI
+Visual Studio IntelliCode
+YAML
+
 
 
 
